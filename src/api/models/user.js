@@ -1,25 +1,63 @@
 export default class User {
-    constructor(id, firstName, lastName, email) {
+    constructor(id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone) {
         this._id = id;
         this._firstName = firstName;
         this._lastName = lastName;
+        this._middleName = middleName
         this._email = email;
+        this._role = role;
+        this._isAdmin = isAdmin;
+        this._scienceDegree = scienceDegree;
+        this._phone = phone;
     }
 
-    static toArray() {
-        return {
-            id: this._id,
-            firstName: this._firstName,
-            lastName: this._lastName,
-            email: this._email
-        };
+    getId() {
+        return this._id;
+    }
+
+    getFirstName() {
+        return this._firstName;
+    }
+    
+    getLastName() {
+        return this._lastName;
+    }
+
+    getMiddleName() {
+        return this._middleName;
+    }
+
+    getEmail() {
+        return this._email;
+    }
+
+    getRole() {
+        return this._role;
+    }
+
+    getIsAdmin() {
+        return this._isAdmin;
+    }
+
+    getScienceDegree() {
+        return this._scienceDegree;
+    }
+
+    getPhone() {
+        return this._phone;
     }
 
     static fromArray(parameters) {
-        return new self(
-            parameters['firstName'], 
-            parameters['lastName'], 
-            parameters['email']
+        return new User(
+            parameters['id'],
+            parameters['first_name'], 
+            parameters['last_name'], 
+            parameters['middle_name'],
+            parameters['email'],
+            parameters['role'],
+            parameters['is_admin'],
+            parameters['science_degree'],
+            parameters['phone']
         );
     }    
 }

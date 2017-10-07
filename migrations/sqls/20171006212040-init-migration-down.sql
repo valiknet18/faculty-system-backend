@@ -75,3 +75,5 @@ DROP TABLE IF EXISTS "answers";
 DROP TABLE IF EXISTS "tests_results";
 
 DROP TABLE IF EXISTS "questions_results";
+
+DROP TABLE IF EXISTS "invited_users";

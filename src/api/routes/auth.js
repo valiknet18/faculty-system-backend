@@ -4,6 +4,6 @@ import { loginChecker } from '../security/auth';
 
 const router = express.Router();
 
-router.get('/login', loginChecker, login);
+router.post('/login', loginChecker, login);
 
 export default router;

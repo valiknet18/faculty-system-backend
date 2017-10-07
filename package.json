@@ -19,11 +19,13 @@
     "nodemon": "^1.12.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.13.5"
+    "sequelize": "^4.13.5",
+    "uuid-token-generator": "^1.0.0"
   },
   "scripts": {
     "start": "nodemon src/index.js --exec babel-node",
-    "migrations": "node node_modules/.bin/db-migrate"
+    "fixtures": "node_modules/.bin/babel-node src/fixtures.js --exec babel-node",
+    "migrate": "node node_modules/.bin/db-migrate --config config/database.json"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.0"

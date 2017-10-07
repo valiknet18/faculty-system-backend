@@ -1,7 +1,8 @@
 import { authService, jwtService } from '../services/auth';
+import { serialize } from '../serializers/users';
 
 export const login = async (req, res, next) => {
-    const user = await authService(req.params.username, req.params.password);
+    const user = await authService(req.body.email, req.body.password);
     
     if (!user) {
         res.status(404).json({
@@ -11,10 +12,9 @@ export const login = async (req, res, next) => {
         return false;
     }
 
-    const token = jwtService(user);
-
-    res.json({
-        token: token,
-        profile: user.toArray()
-    });
+    res.status(201)
+        .json({
+            token: jwtService(user),
+            profile: serialize(user)
+        });
 };

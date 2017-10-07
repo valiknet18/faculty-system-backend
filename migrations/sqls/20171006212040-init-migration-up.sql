@@ -2,10 +2,15 @@ CREATE TABLE "users" (
 	"id" serial NOT NULL,
 	"first_name" varchar NOT NULL,
 	"last_name" varchar NOT NULL,
-	"group_id" integer NOT NULL,
+	"middle_name" VARCHAR(255) NOT NULL,
+	"group_id" integer NULL,
 	"role" varchar NOT NULL,
 	"password" varchar NOT NULL,
 	"is_admin" BOOLEAN NOT NULL,
+	"science_degree" VARCHAR(255) NOT NULL,
+	"email" VARCHAR(255) NOT NULL UNIQUE,
+	"phone" VARCHAR(255) NOT NULL,
+	"registered_at" TIMESTAMP NOT NULL,
 	CONSTRAINT users_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -27,8 +32,8 @@ CREATE TABLE "tests" (
 	"id" serial NOT NULL,
 	"subject_id" integer NOT NULL,
 	"title" varchar NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
+	"created_at" timestamp NOT NULL,
+	"updated_at" timestamp NOT NULL,
 	CONSTRAINT tests_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -38,8 +43,8 @@ CREATE TABLE "tests" (
 
 CREATE TABLE "learning_semesters" (
 	"id" serial NOT NULL,
-	"from_date" timestamp without time zone NOT NULL,
-	"to_date" timestamp without time zone NOT NULL,
+	"from_date" timestamp NOT NULL,
+	"to_date" timestamp NOT NULL,
 	CONSTRAINT learning_semesters_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -72,8 +77,8 @@ CREATE TABLE "subject_group" (
 	"group_id" integer NOT NULL,
 	"teacher_id" integer NOT NULL,
 	"learning_semester_id" integer NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
+	"created_at" timestamp NOT NULL,
+	"updated_at" timestamp NOT NULL,
 	CONSTRAINT subject_group_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -87,10 +92,10 @@ CREATE TABLE "subject_group_task" (
 	"student_id" integer NOT NULL,
 	"subject_group_id" integer NOT NULL,
 	"status" VARCHAR(255) NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
 	"rating" integer NOT NULL,
-	"deadline_date" timestamp without time zone NOT NULL,
+	"created_at" TIMESTAMP NOT NULL,
+	"updated_at" TIMESTAMP NOT NULL,
+	"deadline_date" TIMESTAMP NOT NULL,
 	CONSTRAINT subject_group_task_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -102,8 +107,8 @@ CREATE TABLE "themes" (
 	"id" serial NOT NULL,
 	"subject_id" integer NOT NULL,
 	"title" VARCHAR(255) NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
+	"created_at" TIMESTAMP NOT NULL,
+	"updated_at" TIMESTAMP NOT NULL,
 	CONSTRAINT themes_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -115,7 +120,7 @@ CREATE TABLE "files" (
 	"id" serial NOT NULL,
 	"path" VARCHAR(255) NOT NULL,
 	"mime_type" VARCHAR(255) NOT NULL,
-	"uploaded_at" timestamp without time zone NOT NULL,
+	"uploaded_at" TIMESTAMP NOT NULL,
 	CONSTRAINT files_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -129,8 +134,8 @@ CREATE TABLE "tasks" (
 	"test_id" integer NOT NULL,
 	"title" VARCHAR(255) NOT NULL,
 	"content" TEXT NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
+	"created_at" TIMESTAMP NOT NULL,
+	"updated_at" TIMESTAMP NOT NULL,
 	CONSTRAINT tasks_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -142,10 +147,10 @@ CREATE TABLE "questions" (
 	"id" serial NOT NULL,
 	"type" VARCHAR(255) NOT NULL,
 	"test_id" integer NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
-	"updated_at" timestamp without time zone NOT NULL,
 	"title" varchar NOT NULL,
 	"content" TEXT NOT NULL,
+	"created_at" TIMESTAMP NOT NULL,
+	"updated_at" TIMESTAMP NOT NULL,
 	CONSTRAINT questions_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -179,7 +184,7 @@ CREATE TABLE "tests_results" (
 	"subject_group_id" integer NOT NULL,
 	"test_id" integer NOT NULL,
 	"student_id" integer NOT NULL,
-	"created_at" timestamp without time zone NOT NULL,
+	"created_at" TIMESTAMP NOT NULL,
 	CONSTRAINT tests_results_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -193,6 +198,19 @@ CREATE TABLE "questions_results" (
 	"question_id" integer NOT NULL,
 	"is_correct" BOOLEAN NOT NULL,
 	CONSTRAINT questions_results_pk PRIMARY KEY ("id")
+) WITH (
+  OIDS=FALSE
+);
+
+
+
+CREATE TABLE "invited_users" (
+	"id" serial NOT NULL,
+	"email" VARCHAR(255) NOT NULL,
+	"token" VARCHAR(255) NOT NULL,
+	"invited_at" TIMESTAMP NOT NULL,
+	"role" VARCHAR(255) NOT NULL,
+	CONSTRAINT invited_users_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
 );

@@ -10,3 +10,5 @@ export const getUsersService = async () => {
 
     return result.rows;
 }
+
+
