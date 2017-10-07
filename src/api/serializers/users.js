@@ -6,13 +6,7 @@ export const serializeList = (users) => {
     for (let userAttributes of users) {
         let user = User.fromArray(userAttributes);
 
-        result.push({
-            id: user.getId(),
-            first_name: user.getFirstName(),
-            last_name: user.getLastName(),
-            email: user.getEmail(),
-            role: user.getRole()
-        });
+        result.push(serialize(user));
     }
 
     return result;

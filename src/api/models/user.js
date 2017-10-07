@@ -1,5 +1,7 @@
 export default class User {
-    constructor(id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone) {
+    constructor(
+        id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone, groupId, password
+    ) {
         this._id = id;
         this._firstName = firstName;
         this._lastName = lastName;
@@ -9,6 +11,8 @@ export default class User {
         this._isAdmin = isAdmin;
         this._scienceDegree = scienceDegree;
         this._phone = phone;
+        this._groupId = groupId;
+        this._password = password;
     }
 
     getId() {
@@ -47,6 +51,14 @@ export default class User {
         return this._phone;
     }
 
+    getGroupId() {
+        return this._groupId;
+    }
+
+    getPassword() {
+        return this._password;
+    }
+
     static fromArray(parameters) {
         return new User(
             parameters['id'],
@@ -57,7 +69,9 @@ export default class User {
             parameters['role'],
             parameters['is_admin'],
             parameters['science_degree'],
-            parameters['phone']
+            parameters['phone'],
+            parameters['group_id'],
+            parameters['password']
         );
     }    
 }

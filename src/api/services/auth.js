@@ -5,9 +5,9 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import TokenGenerator from 'uuid-token-generator';
 
-export const authService = async (email, password) => {
+export const getUserByEmail = async (email) => {
     const query = `
-        SELECT id, first_name, last_name, email, role, is_admin, password 
+        SELECT id, first_name, last_name, email, role, is_admin, password, group_id
         FROM users 
         WHERE email=$1 
         LIMIT 1
@@ -18,13 +18,19 @@ export const authService = async (email, password) => {
         return false;
     }
 
-    const res = await bcrypt.compare(password, result.rows[0].password);
+    return User.fromArray(result.rows[0]);
+}
+
+export const authService = async (email, password) => {
+    const user = await getUserByEmail(email)
+
+    const res = await bcrypt.compare(password, user.getPassword());
 
     if (!res) {
         return false;
     }
 
-    return User.fromArray(result.rows[0]);
+    return user;
 }
 
 export const jwtService = (user) => {
