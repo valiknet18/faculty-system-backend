@@ -1,8 +1,8 @@
 import express from 'express';
-import { getSubjectsList } from '../controllers/profile';
+import { getSubjectsListAction } from '../controllers/profile';
 
 const router = express.Router();
 
-router.get('/subjects', getSubjectsList);
+router.get('/subjects', getSubjectsListAction);
 
 export default router;

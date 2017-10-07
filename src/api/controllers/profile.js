@@ -1,15 +1,15 @@
 import { 
     getSubjectsListService as studentsSubjectsListService 
-} from '../services/students/subjects';
+} from '../services/students/courses';
 import {
     getSubjectsListService as teachersSubjectsListService
-} from '../services/teachers/subjects';
-import { serializeList } from '../serializers/subjects';
+} from '../services/teachers/courses';
+import { serializeList } from '../serializers/courses';
 
-export const getSubjectsList = async (req, res, next) => {
+export const getSubjectsListAction = async (req, res, next) => {
     let subjects = [];
 
-    if (req.user.getRole() == 'teacher') {
+    if (req.user.isTeacher()) {
         subjects = await teachersSubjectsListService(req.user);
     } else {
         subjects = await studentsSubjectsListService(req.user);
@@ -18,4 +18,4 @@ export const getSubjectsList = async (req, res, next) => {
     return res.json({
         subjects: serializeList(subjects)
     });
-}
+};

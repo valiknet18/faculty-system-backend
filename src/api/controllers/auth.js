@@ -1,7 +1,7 @@
 import { authService, jwtService } from '../services/auth';
 import { serialize } from '../serializers/users';
 
-export const login = async (req, res, next) => {
+export const loginAction = async (req, res, next) => {
     const user = await authService(req.body.email, req.body.password);
     
     if (!user) {

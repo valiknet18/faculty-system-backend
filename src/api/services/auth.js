@@ -19,10 +19,14 @@ export const getUserByEmail = async (email) => {
     }
 
     return User.fromArray(result.rows[0]);
-}
+};
 
 export const authService = async (email, password) => {
-    const user = await getUserByEmail(email)
+    const user = await getUserByEmail(email);
+
+    if (!user) {
+        return false;
+    }
 
     const res = await bcrypt.compare(password, user.getPassword());
 
@@ -31,16 +35,14 @@ export const authService = async (email, password) => {
     }
 
     return user;
-}
+};
 
 export const jwtService = (user) => {
-    const token = jwt.sign(
-        serialize(user), 
+    return jwt.sign(
+        serialize(user),
         process.env.APP_SECRET
     );
-
-    return token;
-}
+};
 
 export const inviteService = async (parameters) => {
     const query = `
@@ -56,7 +58,7 @@ export const inviteService = async (parameters) => {
         new Date(),
         parameters['role']
     ]);
-}
+};
 
 export const registrateUserService = async (parameters) => {
     const salt = await bcrypt.genSaltSync(
@@ -88,4 +90,4 @@ export const registrateUserService = async (parameters) => {
         user.getPhone(),
         new Date()
     ]); 
-}
+};

@@ -18,4 +18,4 @@ export const getSubjectsListService = async (user, parameters) => {
     const result = await db.query(query, [groupId]);
 
     return result.rows
-}
+};

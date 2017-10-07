@@ -1,9 +1,9 @@
 import express from 'express';
-import { login } from '../controllers/auth';
+import { loginAction } from '../controllers/auth';
 import { loginChecker } from '../security/auth';
 
 const router = express.Router();
 
-router.post('/login', loginChecker, login);
+router.post('/loginAction', loginChecker, loginAction);
 
 export default router;

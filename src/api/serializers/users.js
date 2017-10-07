@@ -10,7 +10,7 @@ export const serializeList = (users) => {
     }
 
     return result;
-}
+};
 
 export const serialize = (user) => {
     return {
@@ -20,4 +20,4 @@ export const serialize = (user) => {
         email: user.getEmail(),
         role: user.getRole()
     };
-}
+};

@@ -1,3 +1,6 @@
+const STUDENT_ROLE = 'student';
+const TEACHER_ROLE = 'teacher';
+
 export default class User {
     constructor(
         id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone, groupId, password
@@ -57,6 +60,14 @@ export default class User {
 
     getPassword() {
         return this._password;
+    }
+
+    isTeacher() {
+        return this._role === TEACHER_ROLE;
+    }
+
+    isStudent() {
+        return this._role === STUDENT_ROLE;
     }
 
     static fromArray(parameters) {

@@ -7,4 +7,4 @@ export const loginChecker = (req, res, next) => {
     }
 
     next();
-}
+};

@@ -4,4 +4,4 @@ export const handleAuthErrors = (err, req, res, next) => {
             'message': 'invalid token'
         });
     }
-}
+};
