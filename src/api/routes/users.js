@@ -1,7 +1,7 @@
-import exporess from 'express';
+import express from 'express';
 import { getUsers } from '../controllers/users';
 
-const router = exporess.Router();
+const router = express.Router();
 
 router.get('/', getUsers);
 
