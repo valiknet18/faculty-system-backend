@@ -1,4 +1,4 @@
-export default class Subject {
+export default class Group {
     constructor(id, name) {
         this.id = id;
         this.name = name;
@@ -13,7 +13,7 @@ export default class Subject {
     }
 
     static fromArray(parameters) {
-        return new Subject(
+        return new Group(
             parameters['id'],
             parameters['name']
         );

@@ -1,5 +1,4 @@
 import { authService, jwtService } from '../services/auth';
-import { serialize } from '../serializers/users';
 
 export const loginAction = async (req, res, next) => {
     const user = await authService(req.body.email, req.body.password);
@@ -15,6 +14,6 @@ export const loginAction = async (req, res, next) => {
     res.status(201)
         .json({
             token: jwtService(user),
-            profile: serialize(user)
+            profile: user
         });
 };

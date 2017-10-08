@@ -1,35 +1,35 @@
 export default class Course {
     constructor(id, subjectName, groupName, teacherFullName, teacherPhone, teacherEmail) {
-        this._id = id;
-        this._subjectName = subjectName;
-        this._teacherFullName = teacherFullName;
-        this._teacherPhone = teacherPhone;
-        this._teacherEmail = teacherEmail;
-        this._groupName = groupName;
+        this.id = id;
+        this.subjectName = subjectName;
+        this.teacherFullName = teacherFullName;
+        this.teacherPhone = teacherPhone;
+        this.teacherEmail = teacherEmail;
+        this.groupName = groupName;
     }
 
     getId() {
-        return this._id;
+        return this.id;
     }
 
     getSubjectName() {
-        return this._subjectName;
+        return this.subjectName;
     }
 
     getTeacherFullName() {
-        return this._teacherFullName;
+        return this.teacherFullName;
     }
 
     getTeacherPhone() {
-        return this._teacherPhone;
+        return this.teacherPhone;
     }
 
     getTeacherEmail() {
-        return this._teacherEmail;
+        return this.teacherEmail;
     }
 
     getGroupName() {
-        return this._groupName;
+        return this.groupName;
     }
 
     static fromArray(attributes) {

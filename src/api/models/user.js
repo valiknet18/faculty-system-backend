@@ -5,69 +5,69 @@ export default class User {
     constructor(
         id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone, groupId, password
     ) {
-        this._id = id;
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._middleName = middleName
-        this._email = email;
-        this._role = role;
-        this._isAdmin = isAdmin;
-        this._scienceDegree = scienceDegree;
-        this._phone = phone;
-        this._groupId = groupId;
-        this._password = password;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.email = email;
+        this.role = role;
+        this.isAdmin = isAdmin;
+        this.scienceDegree = scienceDegree;
+        this.phone = phone;
+        this.groupId = groupId;
+        this.password = password;
     }
 
     getId() {
-        return this._id;
+        return this.id;
     }
 
     getFirstName() {
-        return this._firstName;
+        return this.firstName;
     }
     
     getLastName() {
-        return this._lastName;
+        return this.lastName;
     }
 
     getMiddleName() {
-        return this._middleName;
+        return this.middleName;
     }
 
     getEmail() {
-        return this._email;
+        return this.email;
     }
 
     getRole() {
-        return this._role;
+        return this.role;
     }
 
     getIsAdmin() {
-        return this._isAdmin;
+        return this.isAdmin;
     }
 
     getScienceDegree() {
-        return this._scienceDegree;
+        return this.scienceDegree;
     }
 
     getPhone() {
-        return this._phone;
+        return this.phone;
     }
 
     getGroupId() {
-        return this._groupId;
+        return this.groupId;
     }
 
     getPassword() {
-        return this._password;
+        return this.password;
     }
 
     isTeacher() {
-        return this._role === TEACHER_ROLE;
+        return this.role === TEACHER_ROLE;
     }
 
     isStudent() {
-        return this._role === STUDENT_ROLE;
+        return this.role === STUDENT_ROLE;
     }
 
     static fromArray(parameters) {

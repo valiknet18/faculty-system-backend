@@ -4,7 +4,6 @@ import {
 import {
     getSubjectsListService as teachersSubjectsListService
 } from '../services/teachers/courses';
-import { serializeList } from '../serializers/courses';
 
 export const getSubjectsListAction = async (req, res, next) => {
     let subjects = [];
@@ -16,6 +15,6 @@ export const getSubjectsListAction = async (req, res, next) => {
     }
 
     return res.json({
-        subjects: serializeList(subjects)
+        subjects: subjects
     });
 };

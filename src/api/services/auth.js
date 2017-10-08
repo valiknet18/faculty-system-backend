@@ -1,13 +1,11 @@
 import db from '../../config/db';
-import { serialize } from '../serializers/users';
 import User from '../models/user';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import TokenGenerator from 'uuid-token-generator';
 
 export const getUserByEmail = async (email) => {
     const query = `
-        SELECT id, first_name, last_name, email, role, is_admin, password, group_id
+        SELECT id, first_name, last_name, email, role, is_admin, group_id
         FROM users 
         WHERE email=$1 
         LIMIT 1
@@ -28,7 +26,13 @@ export const authService = async (email, password) => {
         return false;
     }
 
-    const res = await bcrypt.compare(password, user.getPassword());
+    const query = `SELECT password FROM users WHERE id=$1`;
+
+    const result = await db.query(query, [
+        user.getId()
+    ]);
+
+    const res = await bcrypt.compare(password, result.rows[0]['password']);
 
     if (!res) {
         return false;
@@ -38,26 +42,18 @@ export const authService = async (email, password) => {
 };
 
 export const jwtService = (user) => {
+    const restrictedUser = {
+        id: user.getId(),
+        first_name: user.getFirstName(),
+        last_name: user.getLastName(),
+        middle_name: user.getMiddleName(),
+        email: user.getEmail()
+    };
+
     return jwt.sign(
-        serialize(user),
+        restrictedUser,
         process.env.APP_SECRET
     );
-};
-
-export const inviteService = async (parameters) => {
-    const query = `
-        INSERT INTO invited_users(
-            email, token, invited_at, role
-        )
-        VALUES ($1, $2, $3, $4)
-    `;
-
-    const res = db.query(query, [
-        parameters['email'],
-        new TokenGenerator(256, TokenGenerator.BASE62),
-        new Date(),
-        parameters['role']
-    ]);
 };
 
 export const registrateUserService = async (parameters) => {

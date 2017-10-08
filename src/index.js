@@ -1,5 +1,4 @@
 import './config/index';
-import http from 'http';
 import express from 'express';
 import router from './api/routes';
 import jwt from './config/jwt';
@@ -16,6 +15,11 @@ app.use(authMiddleware);
 app.use(handleAuthErrors);
 
 app.use('/api', router);
+
+process.on('unhandledRejection', (err) => {
+    console.log(err.stack);
+});
+
 
 app.listen(1234);
 

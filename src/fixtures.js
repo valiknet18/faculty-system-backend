@@ -19,6 +19,6 @@ const fixtures = async (users) => {
     for (let user of users) {
         await registrateUserService(user);
     }
-}
+};
 
 fixtures(users);
