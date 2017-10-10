@@ -4,7 +4,8 @@ const jwtService = jwt({
     secret: process.env.APP_SECRET
 }).unless({
     path: [
-        '/api/auth/login'
+        '/api/auth/login',
+        /\/doc*/
     ]
 });
 

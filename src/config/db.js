@@ -7,4 +7,4 @@ const pool = new Pool({
     'database': process.env.DATABASE_NAME
 });
 
-export default pool
+export default pool;

@@ -23,7 +23,9 @@
     "uuid-token-generator": "^1.0.0"
   },
   "scripts": {
-    "start": "nodemon src/index.js --exec babel-node",
+    "server": "nodemon src/index.js --exec babel-node",
+    "aptiDoc": "apidoc -i src/ -o public/doc/",
+    "start": "npm run aptiDoc && npm run server",
     "fixtures": "node_modules/.bin/babel-node src/fixtures.js --exec babel-node",
     "migrate": "node node_modules/.bin/db-migrate --config config/database.json"
   },
