@@ -5,6 +5,10 @@ import {
     getSubjectsListService as teachersSubjectsListService
 } from '../services/teachers/courses';
 
+export const getProfileAction = async (req, res, next) => {
+    return res.json(req.user);
+};
+
 export const getSubjectsListAction = async (req, res, next) => {
     let subjects = [];
 
