@@ -1,6 +1,7 @@
+import db from '../../../config/db';
 import TokenGenerator from 'uuid-token-generator';
 
-export const inviteService = async (parameters) => {
+export const inviteUserService = async (parameters) => {
     const query = `
         INSERT INTO invited_users(
             email, token, invited_at, role
@@ -8,10 +9,20 @@ export const inviteService = async (parameters) => {
         VALUES ($1, $2, $3, $4)
     `;
 
-    const res = db.query(query, [
+    await db.query(query, [
         parameters['email'],
-        new TokenGenerator(256, TokenGenerator.BASE62),
+        new TokenGenerator(256, TokenGenerator.BASE62).baseEncoding,
         new Date(),
         parameters['role']
     ]);
+};
+
+export const getStudentsListService = async () => {
+    const query = `
+        SELECT * FROM users WHERE role='student'
+    `;
+
+    const result = await db.query(query);
+
+    return result.rows;
 };
