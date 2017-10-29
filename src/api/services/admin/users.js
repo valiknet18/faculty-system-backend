@@ -17,9 +17,9 @@ export const inviteUserService = async (parameters) => {
     ]);
 };
 
-export const getStudentsListService = async () => {
+export const getUsersListService = async () => {
     const query = `
-        SELECT * FROM users WHERE role='student'
+        SELECT * FROM users
     `;
 
     const result = await db.query(query);

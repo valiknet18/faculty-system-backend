@@ -1,0 +1,1 @@
+ALTER TABLE groups ADD COLUMN is_blocked BOOLEAN DEFAULT false;

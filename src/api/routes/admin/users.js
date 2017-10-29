@@ -1,9 +1,9 @@
 import express from 'express';
-import { getStudentsAction, inviteUserAction } from '../../controllers/admin/users';
+import { getUsersAction, inviteUserAction } from '../../controllers/admin/users';
 
 const router = express.Router();
 
 router.post('/', inviteUserAction);
-router.get('/students', getStudentsAction);
+router.get('/', getUsersAction);
 
 export default router;

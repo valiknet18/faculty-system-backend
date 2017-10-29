@@ -20,8 +20,10 @@ export const getTasksAction = async (req, res, next) => {
     if (req.user.isTeacher()) {
         tasks = await getCourseTasks(req.params);
     } else {
-        tasks = await getUserTasks(res.params, req.user);
+        tasks = await getUserTasks(req.params, req.user);
     }
 
-    res.json(tasks);
+    res.json({
+        tasks: tasks
+    });
 };

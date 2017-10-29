@@ -1,6 +1,8 @@
-export const updateTaskAction = async (req, res, next) => {
-    const parameters = Object.assign({}, req.params, req.body);
-    await updateTaskAction(parameters);
+import { moveTaskService } from '../services/courses';
+
+export const moveTaskAction = async (req, res, next) => {
+    const attributes = Object.assign({}, req.params, req.body);
+    await moveTaskService(attributes);
 
     res.json({});
 };

@@ -7,6 +7,13 @@ import {
 } from '../../services/admin/subjects';
 
 export const createSubjectAction = async (req, res, next) => {
+    console.log(req.body);
+
+    if (!('name' in req.body)) {
+        res.status(422).json({});
+        return;
+    }
+
     const subject = await createSubjectService(req.body);
 
     res.status(201).json(subject);

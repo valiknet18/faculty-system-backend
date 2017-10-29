@@ -3,12 +3,18 @@ import subjects from './subjects';
 import groups from './groups';
 import users from './users';
 import courses from './courses';
+import themes from './themes';
+import tasks from './tasks';
+import learningSemesters from './learning-semesters';
 
 const router = express.Router();
 
 router.use('/subjects', subjects);
+router.use('/subjects', themes);
+router.use('/subjects', tasks);
 router.use('/groups', groups);
 router.use('/users', users);
 router.use('/courses', courses);
+router.use('/learning-semesters', learningSemesters);
 
 export default router;

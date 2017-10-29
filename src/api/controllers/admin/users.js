@@ -1,4 +1,4 @@
-import { inviteUserService, getStudentsListService } from '../../services/admin/users';
+import { inviteUserService, getUsersListService } from '../../services/admin/users';
 
 export const inviteUserAction = async (req, res, next) => {
     await inviteUserService(req.body);
@@ -6,8 +6,8 @@ export const inviteUserAction = async (req, res, next) => {
     res.status(201).json({});
 };
 
-export const getStudentsAction = async (req, res, next) => {
-    const users = await getStudentsListService();
+export const getUsersAction = async (req, res, next) => {
+    const users = await getUsersListService();
 
     res.json({
         users: users

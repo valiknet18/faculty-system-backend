@@ -39,9 +39,9 @@ export const getCourseService = async (attributes) => {
     return Course.fromArray(result.rows[0]);
 };
 
-export const updateTaskService = async (parameters) => {
+export const moveTaskService = async (parameters) => {
     const query = `
-        UPDATE subject_group_task SET status=:status WHERE id=:task
+        UPDATE subject_group_task SET status=$1 WHERE id=$2
     `;
 
     await db.query(query, [
@@ -50,14 +50,44 @@ export const updateTaskService = async (parameters) => {
     ])
 };
 
-export const getCourseTasks = async (parameters) => {
-    let tasks = [];
+export const getCourseTasks = async (attributes) => {
+    const query = `
+        SELECT * FROM subject_group_task WHERE subject_group_id = $1
+    `;
 
-    return tasks;
+    const result = await db.query(query, [
+        attributes.course
+    ]);
+
+    return _groupTasksByStatus(result.rows);
 };
 
-export const getUserTasks = async (parameters, user) => {
-    let tasks = [];
+export const getUserTasks = async (attributes, user) => {
+    const query = `
+        SELECT subject_group_task.id, subject_group_task.status, tasks.title, tasks.content 
+        FROM subject_group_task 
+        JOIN tasks ON tasks.id = subject_group_task.task_id
+        WHERE subject_group_id = $1 AND student_id = $2
+    `;
 
-    return tasks;
+    const result = await db.query(query, [
+        attributes.course,
+        user.id
+    ]);
+
+    return _groupTasksByStatus(result.rows);
+};
+
+const _groupTasksByStatus = (tasks) => {
+    let groupedTasks = {};
+
+    for (let task of tasks) {
+        if (!(task.status in groupedTasks)) {
+            groupedTasks[task.status] = [];
+        }
+
+        groupedTasks[task.status].push(task);
+    }
+
+    return groupedTasks;
 };

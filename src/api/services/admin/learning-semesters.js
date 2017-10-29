@@ -10,3 +10,13 @@ export const createLearningSemesterService = async (parameters) => {
         parameters['to_date']
     ]);
 };
+
+export const getLearningSemestersService = async () => {
+    const query = `
+        SELECT * FROM learning_semesters
+    `;
+
+    const result = await db.query(query);
+
+    return result.rows;
+};

@@ -131,7 +131,7 @@ CREATE TABLE "files" (
 CREATE TABLE "tasks" (
 	"id" serial NOT NULL UNIQUE,
 	"theme_id" integer NOT NULL,
-	"test_id" integer NOT NULL,
+	"test_id" integer NULL,
 	"title" VARCHAR(255) NOT NULL,
 	"content" TEXT NOT NULL,
 	"created_at" TIMESTAMP NOT NULL,
