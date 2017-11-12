@@ -1,5 +1,5 @@
 import express from 'express';
-import { loginAction } from '../controllers/auth';
+import { loginAction, registrationAction, checkRegistrationAction } from '../controllers/auth';
 import { loginChecker } from '../security/auth';
 
 const router = express.Router();
@@ -19,5 +19,9 @@ const router = express.Router();
  *    HTTP/1.1 500 Internal Server Error
  */
 router.post('/login', loginChecker, loginAction);
+
+router.post('/registration', loginChecker, registrationAction);
+
+router.get('/registration', loginChecker, checkRegistrationAction);
 
 export default router;

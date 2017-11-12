@@ -3,7 +3,7 @@ import {createCourseService, getCoursesService} from '../../services/admin/cours
 export const createCourseAction = async (req, res, next) => {
     await createCourseService(req.body);
 
-    res.json(201).json({});
+    res.status(201).json({});
 };
 
 

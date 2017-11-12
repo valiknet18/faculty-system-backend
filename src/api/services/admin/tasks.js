@@ -20,6 +20,6 @@ export const createTaskService = async (attributes) => {
     await db.query(query, [
         attributes.title,
         attributes.content,
-        attributes.themeId
+        attributes.theme
     ]);
 };

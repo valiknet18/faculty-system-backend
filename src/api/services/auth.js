@@ -56,7 +56,7 @@ export const jwtService = (user) => {
     );
 };
 
-export const registrateUserService = async (parameters) => {
+export const registrateUserService = async (parameters, invitedUser = null) => {
     const salt = await bcrypt.genSaltSync(
         parseInt(process.env.APP_ROUNDS)
     );
@@ -78,7 +78,7 @@ export const registrateUserService = async (parameters) => {
         user.getFirstName(),
         user.getLastName(),
         user.getMiddleName(),
-        user.getRole(),
+        user.getRole() || invitedUser['role'],
         hash,
         user.getIsAdmin(),
         user.getScienceDegree(),

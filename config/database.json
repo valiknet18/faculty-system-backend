@@ -1,9 +1,16 @@
 {
-    "dev": {
+    "prod": {
       "driver": "pg",
       "user": { "ENV": "DATABASE_USER" },
       "password": { "ENV": "DATABASE_PASSWORD" },
       "host": { "ENV": "DATABASE_HOST" },
       "database": { "ENV": "DATABASE_NAME" }  
+    },
+    "dev": {
+      "driver": "pg",
+      "user": "postgres",
+      "password": "",
+      "host": "127.0.0.1",
+      "database": "faculty_system"
     }
 }

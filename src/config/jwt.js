@@ -5,6 +5,7 @@ const jwtService = jwt({
 }).unless({
     path: [
         '/api/auth/login',
+        '/api/auth/registration',
         /\/doc*/
     ]
 });

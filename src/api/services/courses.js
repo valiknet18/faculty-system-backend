@@ -1,6 +1,26 @@
 import db from '../../config/db';
 import Course from '../models/course';
 
+export const getTaskService = async (attributes) => {
+    const query = `
+        SELECT s_g_t.id, t.title, t.content, s_g_t.status, CONCAT(u.last_name, ' ', u.first_name) as fullName 
+        FROM subject_group_task as s_g_t
+        JOIN tasks as t ON t.id = s_g_t.task_id
+        JOIN users as u ON u.id = s_g_t.student_id
+        WHERE s_g_t.id = $1
+    `;
+
+    const result = await db.query(query, [
+        attributes.task
+    ]);
+
+    if (!result.rows.length) {
+        return false;
+    }
+
+    return result.rows[0];
+};
+
 export const getCoursesService = async (user) => {
     const query = `
         SELECT s_g.id, g.name as group, s.name as subject, CONCAT(t.last_name, ' ', t.first_name) as teacher
@@ -64,10 +84,11 @@ export const getCourseTasks = async (attributes) => {
 
 export const getUserTasks = async (attributes, user) => {
     const query = `
-        SELECT subject_group_task.id, subject_group_task.status, tasks.title, tasks.content 
-        FROM subject_group_task 
-        JOIN tasks ON tasks.id = subject_group_task.task_id
-        WHERE subject_group_id = $1 AND student_id = $2
+        SELECT s_g_t.id, s_g_t.status, t.title, t.content, CONCAT(u.last_name, ' ', u.first_name) as fullName
+        FROM subject_group_task as s_g_t
+        JOIN tasks as t ON t.id = s_g_t.task_id
+        JOIN users as u ON u.id = s_g_t.student_id
+        WHERE s_g_t.subject_group_id = $1 AND s_g_t.student_id = $2
     `;
 
     const result = await db.query(query, [

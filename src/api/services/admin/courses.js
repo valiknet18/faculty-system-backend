@@ -25,7 +25,7 @@ export const createCourseService = async (attributes) => {
         attributes['subject'],
         attributes['group'],
         attributes['teacher'],
-        attributes['learning_semester']
+        attributes['learningSemester']
     ]);
 
     const course = result.rows[0];

@@ -12,9 +12,7 @@ export const getTasksAction = async (req, res, next) => {
 };
 
 export const createTaskAction = async (req, res, next) => {
-    const attributes = Object.assign({}, req.body, {
-        themeId: req.params.theme
-    });
+    const attributes = Object.assign({}, req.body, req.params);
 
     await createTaskService(attributes);
 

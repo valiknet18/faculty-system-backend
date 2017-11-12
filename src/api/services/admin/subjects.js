@@ -9,7 +9,7 @@ export const getSubjectsService = async () => {
     const result = await db.query(query);
 
     if (!result.rows.length) {
-        return false;
+        return [];
     }
 
     let res = [];

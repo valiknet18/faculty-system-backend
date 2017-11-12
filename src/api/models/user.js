@@ -47,7 +47,7 @@ export default class User {
     }
 
     getScienceDegree() {
-        return this.scienceDegree;
+        return this.scienceDegree || this.role;
     }
 
     getPhone() {
@@ -78,8 +78,8 @@ export default class User {
             parameters['middle_name'],
             parameters['email'],
             parameters['role'],
-            parameters['is_admin'],
-            parameters['science_degree'],
+            parameters['is_admin'] || false,
+            parameters['science_degree'] || '',
             parameters['phone'],
             parameters['group_id'],
             parameters['password']
