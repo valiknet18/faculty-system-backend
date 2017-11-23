@@ -1,1 +1,1 @@
-/* Replace with your SQL commands */
+ALTER TABLE groups DROP COLUMN is_blocked;

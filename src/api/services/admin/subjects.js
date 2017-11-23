@@ -40,7 +40,9 @@ export const createSubjectService = async (attributes) => {
         INSERT INTO subjects(name) VALUES($1) RETURNING id, name
     `;
 
-    const result = await db.query(query, [attributes['name']]);
+    const result = await db.query(query, [
+        attributes.name
+    ]);
 
     if (!result.rows.length) {
         return false;

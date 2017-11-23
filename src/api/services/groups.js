@@ -19,7 +19,7 @@ export const createGroupService = async (attributes) => {
     `;
 
     const result = await db.query(query, [
-        attributes['name']
+        attributes.name
     ]);
 
     if (!result.rows.length) {

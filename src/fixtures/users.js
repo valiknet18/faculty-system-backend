@@ -1,5 +1,4 @@
-import './config/index';
-import { registrateUserService } from './api/services/auth';
+import { registrateUserService } from './../api/services/auth';
 
 const users = [
     {
@@ -26,10 +25,10 @@ const users = [
     },
 ];
 
-const fixtures = async (users) => {
+const fixtures = async () => {
     for (let user of users) {
         await registrateUserService(user);
     }
 };
 
-fixtures(users);
+export default fixtures;

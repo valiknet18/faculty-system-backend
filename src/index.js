@@ -28,4 +28,6 @@ process.on('unhandledRejection', (err) => {
 
 app.listen(8080);
 
+export default app;
+
 console.log('Server started on port 8080');

@@ -12,5 +12,12 @@
       "password": "",
       "host": "127.0.0.1",
       "database": "faculty_system"
+    },
+    "test": {
+      "driver": "pg",
+      "user": "postgres",
+      "password": "",
+      "host": "127.0.0.1",
+      "database": "faculty_system_test"
     }
 }
