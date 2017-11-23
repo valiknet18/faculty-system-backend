@@ -1,4 +1,7 @@
-import {createCourseService, getCoursesService} from '../../services/admin/courses';
+import {
+    createCourseService,
+    getCoursesService
+} from '../../services/admin/courses';
 
 export const createCourseAction = async (req, res, next) => {
     await createCourseService(req.body);
