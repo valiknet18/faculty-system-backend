@@ -32,7 +32,7 @@
     "start": "npm run aptiDoc && npm run server",
     "fixtures": "node_modules/.bin/babel-node src/fixtures --exec babel-node",
     "migrate": "node node_modules/.bin/db-migrate --config config/database.json",
-    "test": "node_modules/mocha/bin/mocha tests/ --recursive --require babel-polyfill --require babel-register"
+    "test": "node_modules/mocha/bin/mocha tests/ --recursive --require babel-polyfill --require babel-register --exit"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",

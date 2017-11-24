@@ -1,7 +1,8 @@
 import loadFixtures from '../src/fixtures/index';
-import app from '../src';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import app from '../src/app';
+import {getUserByEmail, jwtService} from "../src/api/services/auth";
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
@@ -14,6 +15,15 @@ export const upMigrations = async () => {
 export const downMigrations = async () => {
     await exec('node node_modules/.bin/db-migrate --env test --config config/database.json reset');
 };
+
+export const getUserToken = async (email) => {
+    const user = await getUserByEmail(email);
+    const token = jwtService(user);
+
+    return 'Bearer ' + token;
+};
+
+export const ADMIN_EMAIL = 'admin@example.com';
 
 chai.use(chaiHttp);
 

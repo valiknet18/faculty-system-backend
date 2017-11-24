@@ -1,5 +1,5 @@
 import { authService, jwtService, registrateUserService } from '../services/auth';
-import {getUserByToken} from "../services/admin/users";
+import { getUserByToken } from "../services/admin/users";
 
 export const loginAction = async (req, res, next) => {
     const user = await authService(req.body.email, req.body.password);

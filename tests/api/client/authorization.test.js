@@ -1,25 +1,38 @@
-import assert from 'assert';
 import chai from 'chai';
 import { downMigrations, upMigrations, request } from '../../helpers';
 
 
 describe('Authorization', () => {
+    const LOGIN_PATH = '/api/auth/login';
+
     let expect = chai.expect;
 
     before(async () => {
         await upMigrations();
     });
 
-    it('should be true', async () => {
+    it('user should be successfully logged in', async () => {
         const res = await request
-            .post('/api/auth/login')
+            .post(LOGIN_PATH)
             .send({
                 email: 'admin@example.com',
                 password: '112233',
-            })
-            .set('Content-Type', 'application/json');
+            });
 
         expect(res).to.have.status(201);
+    });
+
+    it('user should receive auth error', async () => {
+        try {
+            await request
+                .post(LOGIN_PATH)
+                .send({
+                    email: 'invalid@example.com',
+                    password: '111111'
+                });
+        } catch (exception) {
+            expect(exception.response).to.have.status(404);
+        }
     });
 
     after(async () => {
