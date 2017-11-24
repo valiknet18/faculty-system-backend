@@ -6,8 +6,8 @@ export const createLearningSemesterService = async (parameters) => {
     `;
 
     const result = await db.query(query, [
-        parameters['from_date'],
-        parameters['to_date']
+        parameters.fromDate,
+        parameters.toDate
     ]);
 };
 

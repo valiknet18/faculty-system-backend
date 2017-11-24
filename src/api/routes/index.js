@@ -10,7 +10,7 @@ const router = express.Router();
 router.use('/profile/self', profile);
 router.use('/auth', auth);
 router.use('/users', users);
-router.use('/admin', admin);
 router.use('/courses', courses);
+router.use('/admin', admin);
 
 export default router;

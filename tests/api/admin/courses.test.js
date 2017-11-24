@@ -8,9 +8,9 @@ import {
 } from '../../helpers';
 
 
-describe('Admin groups', () => {
-    const CREATE_GROUP = '/api/admin/groups';
-    const GET_GROUPS = '/api/admin/groups';
+describe('Admin courses', () => {
+    const GET_COURSES = '/api/admin/courses';
+    const CREATE_COURSE = '/api/admin/courses';
 
     let expect = chai.expect;
     let adminToken;
@@ -20,24 +20,26 @@ describe('Admin groups', () => {
         adminToken = await getUserToken(ADMIN_EMAIL);
     });
 
-    it('list of groups should be successfully returned', async () => {
+    it('list of courses should be successfully returned', async () => {
         const res = await request
-            .get(GET_GROUPS)
+            .get(GET_COURSES)
             .set('Authorization', adminToken);
 
         expect(res).to.have.status(200);
 
         expect(res.body).to.be.an('object');
-        expect(res.body.groups).to.have.lengthOf(1);
+        expect(res.body.courses).to.have.lengthOf(1);
     });
 
-
-    it('group should be successfully created', async () => {
+    it('course should be successfully created', async () => {
         const res = await request
-            .post(CREATE_GROUP)
+            .post(CREATE_COURSE)
             .set('Authorization', adminToken)
             .send({
-                name: 'Test group',
+                teacher: 1,
+                learningSemester: 1,
+                subject: 2,
+                group: 1,
             });
 
         expect(res).to.have.status(201);

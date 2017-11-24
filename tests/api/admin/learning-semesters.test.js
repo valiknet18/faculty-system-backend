@@ -8,9 +8,9 @@ import {
 } from '../../helpers';
 
 
-describe('Admin groups', () => {
-    const CREATE_GROUP = '/api/admin/groups';
-    const GET_GROUPS = '/api/admin/groups';
+describe('Admin learning semesters', () => {
+    const GET_LEARNING_SEMESTERS = '/api/admin/learning-semesters';
+    const CREATE_LEARNING_SEMESTER = '/api/admin/learning-semesters';
 
     let expect = chai.expect;
     let adminToken;
@@ -20,24 +20,24 @@ describe('Admin groups', () => {
         adminToken = await getUserToken(ADMIN_EMAIL);
     });
 
-    it('list of groups should be successfully returned', async () => {
+    it('list of learning semesters should be successfully returned', async () => {
         const res = await request
-            .get(GET_GROUPS)
+            .get(GET_LEARNING_SEMESTERS)
             .set('Authorization', adminToken);
 
         expect(res).to.have.status(200);
 
         expect(res.body).to.be.an('object');
-        expect(res.body.groups).to.have.lengthOf(1);
+        expect(res.body.learningSemesters).to.have.lengthOf(1);
     });
 
-
-    it('group should be successfully created', async () => {
+    it('learning semester should be successfully created', async () => {
         const res = await request
-            .post(CREATE_GROUP)
+            .post(CREATE_LEARNING_SEMESTER)
             .set('Authorization', adminToken)
             .send({
-                name: 'Test group',
+                fromDate: '2017-01-01T10:00',
+                toDate: '2017-10-01T10:00',
             });
 
         expect(res).to.have.status(201);

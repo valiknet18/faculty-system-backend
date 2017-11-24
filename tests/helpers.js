@@ -7,6 +7,8 @@ import {getUserByEmail, jwtService} from "../src/api/services/auth";
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
+export const ADMIN_EMAIL = 'admin@example.com';
+
 export const upMigrations = async () => {
     await exec('node node_modules/.bin/db-migrate --env test --config config/database.json up');
     await loadFixtures();
@@ -22,8 +24,6 @@ export const getUserToken = async (email) => {
 
     return 'Bearer ' + token;
 };
-
-export const ADMIN_EMAIL = 'admin@example.com';
 
 chai.use(chaiHttp);
 
