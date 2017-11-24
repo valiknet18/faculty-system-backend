@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/valiknet18/faculty-system-backend.svg?branch=feature/add-tests)](https://travis-ci.org/valiknet18/faculty-system-backend)
+
 # Installing app
 ## 1. Configuration postgres.
 
