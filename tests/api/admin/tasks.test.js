@@ -8,9 +8,9 @@ import {
 } from '../../helpers';
 
 
-describe('Admin users', () => {
-    const GET_USERS = '/api/admin/users';
-    const INVITE_USER = '/api/admin/users';
+describe('Admin tasks', () => {
+    const CREATE_TASK = '/api/admin/subjects/1/themes/1/tasks';
+    const GET_TASKS = '/api/admin/subjects/1/themes/1/tasks';
 
     let expect = chai.expect;
     let adminToken;
@@ -20,24 +20,24 @@ describe('Admin users', () => {
         adminToken = await getUserToken(ADMIN_EMAIL);
     });
 
-    it('list of users should be successfully returned', async () => {
+    it('list of tasks should be successfully returned', async () => {
         const res = await request
-            .get(GET_USERS)
+            .get(GET_TASKS)
             .set('Authorization', adminToken);
 
         expect(res).to.have.status(200);
 
         expect(res.body).to.be.an('object');
-        expect(res.body.users).to.have.lengthOf(3);
+        expect(res.body.tasks).to.have.lengthOf(2);
     });
 
-    it('user should be successfully invited', async () => {
+    it('task should be successfully created', async () => {
         const res = await request
-            .post(INVITE_USER)
+            .post(CREATE_TASK)
             .set('Authorization', adminToken)
             .send({
-                email: 'student2@example.com',
-                role: 'student',
+                title: 'Test task',
+                content: 'Content',
             });
 
         expect(res).to.have.status(201);

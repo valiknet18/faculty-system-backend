@@ -13,4 +13,3 @@ export const getLearningSemestersAction = async (req, res, next) => {
         learningSemesters: learningSemesters
     });
 };
-

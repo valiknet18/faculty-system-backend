@@ -55,7 +55,7 @@ export default class User {
     }
 
     getGroupId() {
-        return this.groupId;
+        return this.groupId || null;
     }
 
     getPassword() {

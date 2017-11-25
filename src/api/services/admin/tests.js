@@ -17,7 +17,7 @@ export const createTestService = async (attributes) => {
         INSERT INTO tests(title, subject_id, created_at, updated_at) VALUES($1, $2, NOW(), NOW())
     `;
 
-    const result = await db.query(query, [
+    await db.query(query, [
         attributes.title,
         attributes.subject
     ])

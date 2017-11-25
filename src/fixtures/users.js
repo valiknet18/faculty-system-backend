@@ -21,8 +21,20 @@ const users = [
         is_admin: true,
         email: 'teacher@example.com',
         science_degree: 'teacher',
-        phone: '0938648281'
+        phone: '0938648281',
     },
+    {
+        first_name: 'User',
+        last_name: 'Student',
+        middle_name: 'Student',
+        role: 'student',
+        password: '112233',
+        is_admin: true,
+        email: 'student@example.com',
+        science_degree: 'student',
+        phone: '0938648333',
+        group_id: 1,
+    }
 ];
 
 const fixtures = async () => {

@@ -70,9 +70,9 @@ export const registrateUserService = async (parameters, invitedUser = null) => {
         INSERT INTO users(
             first_name, last_name, middle_name, role, 
             password, is_admin, science_degree, 
-            email, phone, registered_at
+            email, phone, registered_at, group_id
         ) 
-        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+        VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
     `;
     const res = await db.query(query, [
         user.getFirstName(),
@@ -84,6 +84,7 @@ export const registrateUserService = async (parameters, invitedUser = null) => {
         user.getScienceDegree(),
         user.getEmail(),
         user.getPhone(),
-        new Date()
+        new Date(),
+        user.getGroupId()
     ]); 
 };

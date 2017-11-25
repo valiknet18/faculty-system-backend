@@ -19,6 +19,6 @@ export const createThemeService = async (attributes) => {
 
     await db.query(query, [
         attributes.title,
-        attributes.subjectId
+        attributes.subject
     ]);
 };

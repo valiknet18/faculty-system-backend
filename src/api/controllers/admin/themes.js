@@ -12,9 +12,7 @@ export const getThemesAction = async (req, res, next) => {
 };
 
 export const createThemeAction = async (req, res, next) => {
-    const attributes = Object.assign({}, req.body, {
-        subjectId: req.params.subject
-    });
+    const attributes = Object.assign({}, req.body, req.params);
 
     await createThemeService(attributes);
 
