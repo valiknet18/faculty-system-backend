@@ -1,4 +1,4 @@
-import db from '../../../config/db';
+import db from '../../../common/connection/db';
 
 export const getTasksService = async (theme) => {
     const query = `

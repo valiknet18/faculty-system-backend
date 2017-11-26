@@ -1,4 +1,4 @@
-import db from '../../config/db';
+import db from '../../common/connection/db';
 import User from '../models/user';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
@@ -78,7 +78,7 @@ export const registrateUserService = async (parameters, invitedUser = null) => {
         user.getFirstName(),
         user.getLastName(),
         user.getMiddleName(),
-        user.getRole() || invitedUser['role'],
+        user.getRole() || 'student',
         hash,
         user.getIsAdmin(),
         user.getScienceDegree(),

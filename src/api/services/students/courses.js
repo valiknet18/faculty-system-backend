@@ -1,4 +1,4 @@
-import db from '../../../config/db';
+import db from '../../../common/connection/db';
 
 export const getSubjectsListService = async (user, parameters) => {
     const groupId = user.getGroupId();

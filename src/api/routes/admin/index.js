@@ -22,5 +22,6 @@ router.use('/users', users);
 router.use('/teachers', teachers);
 router.use('/courses', courses);
 router.use('/learning-semesters', learningSemesters);
+router.use('/learning-semesters', learningSemesters);
 
 export default router;

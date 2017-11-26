@@ -2,7 +2,8 @@ import express from 'express';
 import path from 'path';
 
 import './config/index';
-import router from './api/routes';
+
+import router from './routes';
 import cors from 'cors';
 import jwt from './config/jwt';
 
@@ -18,8 +19,8 @@ app.use(authMiddleware);
 app.use(handleAuthErrors);
 
 app.use(cors());
-
 app.use('/api', router);
+
 app.use('/doc', express.static(path.join(__dirname, '../public/doc')));
 
 process.on('unhandledRejection', (err) => {

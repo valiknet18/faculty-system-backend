@@ -1,4 +1,4 @@
-import db from '../../../config/db';
+import db from '../../../common/connection/db';
 import Subject from "../../models/subject";
 
 export const getSubjectsService = async () => {

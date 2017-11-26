@@ -1,4 +1,4 @@
-import db from '../../config/db';
+import db from '../../common/connection/db';
 import Course from '../models/course';
 
 export const getTaskService = async (attributes) => {

@@ -1,4 +1,4 @@
-import db from '../../config/db';
+import db from '../../common/connection/db';
 import Group from '../models/group';
 
 export const getGroupsListService = async () => {
@@ -50,8 +50,6 @@ export const updateGroupService = async (attributes) => {
 };
 
 export const getGroupService = async (attributes) => {
-    console.log(attributes);
-
     const query = `
         SELECT * FROM groups WHERE id=$1
     `;

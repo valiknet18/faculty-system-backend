@@ -1,4 +1,4 @@
-import db from '../../../config/db';
+import db from '../../../common/connection/db';
 import User from "../../models/user";
 
 export const getCoursesService = async () => {

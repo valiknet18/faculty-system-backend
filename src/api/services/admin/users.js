@@ -1,4 +1,4 @@
-import db from '../../../config/db';
+import db from '../../../common/connection/db';
 import TokenGenerator from 'uuid-token-generator';
 
 export const inviteUserService = async (parameters) => {
