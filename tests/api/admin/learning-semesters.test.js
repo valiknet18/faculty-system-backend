@@ -29,6 +29,12 @@ describe('Admin learning semesters', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.learningSemesters).to.have.lengthOf(1);
+
+        const learningSemester = res.body.learningSemesters[0];
+
+        expect(learningSemester.id).to.equal(1);
+        expect(learningSemester.fromDate).to.equal('2017-01-01T08:00:00.000Z');
+        expect(learningSemester.toDate).to.equal('2017-10-01T07:00:00.000Z');
     });
 
     it('learning semester should be successfully created', async () => {
@@ -36,11 +42,17 @@ describe('Admin learning semesters', () => {
             .post(CREATE_LEARNING_SEMESTER)
             .set('Authorization', adminToken)
             .send({
-                fromDate: '2017-01-01T10:00',
-                toDate: '2017-10-01T10:00',
+                fromDate: '2017-01-01T10:00:00+0000',
+                toDate: '2017-10-01T10:00:00+0000',
             });
 
         expect(res).to.have.status(201);
+
+        const learningSemester = res.body;
+
+        expect(learningSemester.id).to.equal(2);
+        expect(learningSemester.fromDate).to.equal('2017-01-01T10:00:00+0000');
+        expect(learningSemester.toDate).to.equal('2017-10-01T10:00:00+0000');
     });
 
     after(async () => {

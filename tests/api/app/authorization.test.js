@@ -20,6 +20,14 @@ describe('Authorization', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const user = res.body;
+
+        expect(user.token).to.have.be.an('string');
+        expect(user.profile).to.have.be.an('object');
+        expect(user.profile.firstName).to.equal('Valentyn');
+        expect(user.profile.lastName).to.equal('Hrynevich');
+        expect(user.profile.email).to.equal('admin@example.com');
     });
 
     it('user should receive auth error', async () => {

@@ -15,7 +15,7 @@ class CoursesRepository {
         const query = `
             SELECT c.id as id, s.name as subject_name, 
                 t.first_name as teacher_first_name, t.last_name as teacher_last_name, 
-                g.name as group_name, s.name as subject_name
+                g.name as group_name
             FROM subject_group as c
             JOIN users as t ON t.id = c.teacher_id
             JOIN groups as g ON g.id = c.group_id

@@ -29,6 +29,11 @@ describe('Admin groups', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.groups).to.have.lengthOf(1);
+
+        const group = res.body.groups[0];
+
+        expect(group.id).to.equal(1);
+        expect(group.name).to.equal('Group 1')
     });
 
 
@@ -41,6 +46,11 @@ describe('Admin groups', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const group = res.body;
+
+        expect(group.id).to.equal(2);
+        expect(group.name).to.equal('Test group')
     });
 
     after(async () => {

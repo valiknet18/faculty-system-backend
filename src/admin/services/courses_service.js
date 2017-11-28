@@ -38,6 +38,8 @@ class CoursesService {
         for (let user of students) {
             await this._coursesRepository.assignTasksToStudent(tasks, user, course)
         }
+
+        return course;
     }
 }
 
