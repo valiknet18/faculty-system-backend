@@ -27,7 +27,7 @@ export default class Course {
     }
 
     /**
-     * @param {Array} attributes
+     * @param {Object} attributes
      * @return {Course}
      */
     static fromArray(attributes) {

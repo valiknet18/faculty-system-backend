@@ -1,4 +1,4 @@
-import { createTaskService } from "../../src/api/services/admin/tasks";
+import tasksService from "../../src/admin/services/tasks_service";
 
 const tasks = [
     {
@@ -15,7 +15,7 @@ const tasks = [
 
 const fixtures = async () => {
     for (let task of tasks) {
-        await createTaskService(task);
+        await tasksService.createTask(task);
     }
 };
 

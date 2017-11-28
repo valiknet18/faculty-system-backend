@@ -53,7 +53,7 @@ class AuthService {
         const salt = await this._bcrypt.genSaltSync(
             parseInt(process.env.APP_ROUNDS)
         );
-        const passwordHash = await self._bcrypt.hash(
+        const passwordHash = await this._bcrypt.hash(
             attributes.password,
             salt
         );

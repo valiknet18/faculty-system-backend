@@ -15,7 +15,9 @@ export default class Theme {
         return new Theme(
             attributes.id,
             attributes.title,
-            Subject.fromArray(attributes),
+            Subject.fromArray({
+                id: attributes.subject,
+            }),
         );
     }
 }

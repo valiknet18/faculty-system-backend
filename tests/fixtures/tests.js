@@ -1,4 +1,4 @@
-import { createTestService } from "../../src/api/services/admin/tests";
+import testsService from "../../src/admin/services/tests_service";
 
 const tests = [
     {
@@ -13,7 +13,7 @@ const tests = [
 
 const fixtures = async () => {
     for (let test of tests) {
-        await createTestService(test);
+        await testsService.createTest(test);
     }
 };
 

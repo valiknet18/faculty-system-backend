@@ -1,4 +1,4 @@
-import { createLearningSemesterService } from '../../src/api/services/admin/learning-semesters';
+import learningSemestersService from "../../src/admin/services/learning_semesters_service";
 
 const learningSemesters = [
     {
@@ -9,7 +9,7 @@ const learningSemesters = [
 
 const fixtures = async () => {
     for (let learningSemester of learningSemesters) {
-        await createLearningSemesterService(learningSemester);
+        await learningSemestersService.createLearningSemester(learningSemester);
     }
 };
 

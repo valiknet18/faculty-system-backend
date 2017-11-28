@@ -1,4 +1,4 @@
-import { createThemeService } from "../../src/api/services/admin/themes";
+import themesService from "../../src/admin/services/themes_service";
 
 const themes = [
     {
@@ -13,7 +13,7 @@ const themes = [
 
 const fixtures = async () => {
     for (let theme of themes) {
-        await createThemeService(theme);
+        await themesService.createTheme(theme);
     }
 };
 

@@ -7,10 +7,12 @@ import tasks from './tasks';
 import tests from './tests';
 import themes from './themes';
 import questions from './questions';
+import users from './users';
 import learningSemesters from './learning_semesters';
 
 const router = express.Router();
 
+router.use('/users', users);
 router.use('/groups', groups);
 router.use('/courses', courses);
 router.use('/subjects', subjects);

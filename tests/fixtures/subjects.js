@@ -1,4 +1,4 @@
-import { createSubjectService } from "../../src/api/services/admin/subjects";
+import subjectsService from "../../src/admin/services/subjects_service";
 
 const subjects = [
     {
@@ -11,7 +11,7 @@ const subjects = [
 
 const fixtures = async () => {
     for (let subject of subjects) {
-        await createSubjectService(subject);
+        await subjectsService.createSubject(subject);
     }
 };
 

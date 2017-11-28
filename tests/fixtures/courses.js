@@ -1,4 +1,4 @@
-import { createCourseService } from "../../src/api/services/admin/courses";
+import coursesService from "../../src/admin/services/courses_service";
 
 const courses = [
     {
@@ -11,7 +11,7 @@ const courses = [
 
 const fixtures = async () => {
     for (let course of courses) {
-        await createCourseService(course);
+        await coursesService.createCourse(course);
     }
 };
 

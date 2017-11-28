@@ -24,7 +24,7 @@ class CoursesService {
 
     /**
      * Crete course
-     * @param {Array} attributes
+     * @param {Object} attributes
      * @return {Promise.<void>}
      */
     async createCourse(attributes) {

@@ -8,6 +8,7 @@ import tasksFixtures from './tasks';
 import learningSemestersFixtures from './learning-semesters';
 import coursesFixtures from './courses';
 import testsFixtures from './tests';
+import questionsFixtures from './questions';
 
 let functions = [
     groupsFixtures,
@@ -18,6 +19,7 @@ let functions = [
     learningSemestersFixtures,
     coursesFixtures,
     testsFixtures,
+    questionsFixtures,
 ];
 
 const loadFixtures = async () => {

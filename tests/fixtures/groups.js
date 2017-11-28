@@ -1,4 +1,4 @@
-import { createGroupService } from '../../src/api/services/groups';
+import groupsService from "../../src/admin/services/groups_service";
 
 const groups = [
     {
@@ -8,7 +8,7 @@ const groups = [
 
 const fixtures = async () => {
     for (let group of groups) {
-        await createGroupService(group);
+        await groupsService.createGroup(group);
     }
 };
 

@@ -9,8 +9,8 @@ import {
 
 
 describe('Admin questions', () => {
-    const CREATE_TEST = '/api/admin/subjects/1/tests/1/questions';
-    const GET_TESTS = '/api/admin/subjects/1/tests/1/questions';
+    const CREATE_QUESTION = '/api/admin/subjects/1/tests/1/questions';
+    const GET_QUESTIONS = '/api/admin/subjects/1/tests/1/questions';
 
     let expect = chai.expect;
     let adminToken;
@@ -20,23 +20,25 @@ describe('Admin questions', () => {
         adminToken = await getUserToken(ADMIN_EMAIL);
     });
 
-    it('list of tests should be successfully returned', async () => {
+    it('list of questions should be successfully returned', async () => {
         const res = await request
-            .get(GET_TESTS)
+            .get(GET_QUESTIONS)
             .set('Authorization', adminToken);
 
         expect(res).to.have.status(200);
 
         expect(res.body).to.be.an('object');
-        expect(res.body.tests).to.have.lengthOf(2);
+        expect(res.body.questions).to.have.lengthOf(2);
     });
 
-    it('test should be successfully created', async () => {
+    it('question should be successfully created', async () => {
         const res = await request
-            .post(CREATE_TEST)
+            .post(CREATE_QUESTION)
             .set('Authorization', adminToken)
             .send({
-                title: 'Test test',
+                title: 'Test question',
+                content: 'Simple question',
+                type: 'simple',
             });
 
         expect(res).to.have.status(201);
