@@ -7,8 +7,8 @@ import router from './routes';
 import cors from 'cors';
 import jwt from './config/jwt';
 
-import { authMiddleware } from './api/middlewares/auth';
-import { handleAuthErrors } from './api/middlewares/errors';
+import { authMiddleware } from './common/middlewares/auth';
+import { handleAuthErrors } from './common/middlewares/errors';
 
 const app = express();
 

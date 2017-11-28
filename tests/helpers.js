@@ -2,7 +2,9 @@ import loadFixtures from './fixtures';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/app';
-import {getUserByEmail, jwtService} from "../src/api/services/auth";
+
+import usersRepository from "../src/app/repositories/user_repository";
+import authService from "../src/app/services/auth_service";
 
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
@@ -20,8 +22,8 @@ export const downMigrations = async () => {
 };
 
 export const getUserToken = async (email) => {
-    const user = await getUserByEmail(email);
-    const token = jwtService(user);
+    const user = await usersRepository.getUserByEmail(email);
+    const token = authService.getToken(user);
 
     return 'Bearer ' + token;
 };
