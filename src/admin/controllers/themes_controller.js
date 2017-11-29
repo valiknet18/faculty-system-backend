@@ -30,9 +30,9 @@ class ThemesController {
             subject: req.params.subject,
         });
 
-        const theme = this._themesService.createTheme(attributes);
+        const theme = await this._themesService.createTheme(attributes);
 
-        res.status(201).json({})
+        res.status(201).json(theme);
     }
 }
 

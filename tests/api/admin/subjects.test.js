@@ -29,6 +29,11 @@ describe('Admin subjects', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.subjects).to.have.lengthOf(2);
+
+        const subject = res.body.subjects[0];
+
+        expect(subject.id).to.equal(1);
+        expect(subject.name).to.equal('Subject 1');
     });
 
     it('subject should be successfully created', async () => {
@@ -40,6 +45,11 @@ describe('Admin subjects', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const subject = res.body;
+
+        expect(subject.id).to.equal(3);
+        expect(subject.name).to.equal('Test subject 1');
     });
 
     after(async () => {

@@ -15,7 +15,7 @@ class SubjectsController {
      * @return {Promise.<void>}
      */
     async createSubjectAction(req, res) {
-        const subject = this._subjectsService.createSubject(req.body);
+        const subject = await this._subjectsService.createSubject(req.body);
 
         return res.status(201).json(subject);
     }

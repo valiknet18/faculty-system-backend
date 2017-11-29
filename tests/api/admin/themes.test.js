@@ -29,6 +29,11 @@ describe('Admin themes', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.themes).to.have.lengthOf(2);
+
+        const theme = res.body.themes[0];
+
+        expect(theme.id).to.equal(1);
+        expect(theme.title).to.equal('Title 1');
     });
 
     it('theme should be successfully created', async () => {
@@ -40,6 +45,11 @@ describe('Admin themes', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const theme = res.body;
+
+        expect(theme.id).to.equal(3);
+        expect(theme.title).to.equal('Test theme');
     });
 
     after(async () => {

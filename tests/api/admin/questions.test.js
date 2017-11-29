@@ -29,6 +29,12 @@ describe('Admin questions', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.questions).to.have.lengthOf(2);
+
+        const question = res.body.questions[0];
+
+        expect(question.id).to.equal(1);
+        expect(question.title).to.equal('Question 1');
+        expect(question.content).to.equal('Hello world 1');
     });
 
     it('question should be successfully created', async () => {
@@ -42,6 +48,12 @@ describe('Admin questions', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const question = res.body;
+
+        expect(question.id).to.equal(3);
+        expect(question.title).to.equal('Test question');
+        expect(question.content).to.equal('Simple question');
     });
 
     after(async () => {

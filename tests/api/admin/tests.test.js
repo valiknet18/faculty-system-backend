@@ -29,6 +29,11 @@ describe('Admin tests', () => {
 
         expect(res.body).to.be.an('object');
         expect(res.body.tests).to.have.lengthOf(2);
+
+        const test = res.body.tests[0];
+
+        expect(test.id).to.equal(1);
+        expect(test.title).to.equal('Test 1');
     });
 
     it('test should be successfully created', async () => {
@@ -40,6 +45,11 @@ describe('Admin tests', () => {
             });
 
         expect(res).to.have.status(201);
+
+        const test = res.body;
+
+        expect(test.id).to.equal(3);
+        expect(test.title).to.equal('Test test');
     });
 
     after(async () => {
