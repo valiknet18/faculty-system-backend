@@ -19,11 +19,23 @@ class TestsService {
     }
 
     /**
+     * Create new test
      * @param {Object} attributes
      * @return {Promise.<Test>}
      */
     async createTest(attributes) {
         return await this._testsRepository.createTest(
+            Test.fromArray(attributes)
+        );
+    }
+
+    /**
+     * Update test
+     * @param {Object} attributes
+     * @return {Promise.<Test>}
+     */
+    async updateTest(attributes) {
+        return await this._testsRepository.updateTest(
             Test.fromArray(attributes)
         );
     }

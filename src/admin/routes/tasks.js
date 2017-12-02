@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get('/:subject/themes/:theme/tasks', checkAdmin, tasksController.getTasksAction.bind(tasksController));
 router.post('/:subject/themes/:theme/tasks', checkAdmin, tasksController.createTaskAction.bind(tasksController));
+router.put('/:subject/themes/:theme/tasks/:task', checkAdmin, tasksController.updateTaskAction.bind(tasksController));
 
 export default router;

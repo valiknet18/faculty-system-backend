@@ -34,6 +34,23 @@ class ThemesController {
 
         res.status(201).json(theme);
     }
+
+    /**
+     * Update theme action
+     * @param req
+     * @param res
+     * @return {Promise.<void>}
+     */
+    async updateThemeAction(req, res) {
+        const attributes = Object.assign({}, req.body, {
+            subject: req.params.subject,
+            id: req.params.theme,
+        });
+
+        const theme = await this._themesService.updateTheme(attributes);
+
+        res.json(theme);
+    }
 }
 
 export default new ThemesController(themesService);

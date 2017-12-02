@@ -52,17 +52,38 @@ class TasksRepository {
     async createTask(task) {
         const query = `
             INSERT INTO tasks(title, content, test_id, theme_id, created_at, updated_at) 
-            VALUES($1, $2, null, $3, NOW(), NOW())
+            VALUES($1, $2, $3, $4, NOW(), NOW())
             RETURNING id
         `;
 
         const result = await db.query(query, [
             task.title,
             task.content,
-            task.theme.id
+            task.test ? task.test.id : null,
+            task.theme.id,
         ]);
 
         task.setId(result.rows[0].id);
+
+        return task;
+    }
+
+    /**
+     * Update task
+     * @param {Task} task
+     * @return {Promise.<Task>}
+     */
+    async updateTask(task) {
+        const query = `
+            UPDATE tasks SET title=$1, content=$2, test_id=$3 WHERE id=$4
+        `;
+
+        await db.query(query, [
+            task.title,
+            task.content,
+            task.test ? task.test.id : null,
+            task.id,
+        ]);
 
         return task;
     }

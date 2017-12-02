@@ -21,6 +21,17 @@ class ThemesService {
     }
 
     /**
+     * Update theme
+     * @param {Object} attributes
+     * @return {Promise.<Theme>}
+     */
+    async updateTheme(attributes) {
+        return await this._themesRepository.updateTheme(
+            Theme.fromArray(attributes)
+        );
+    }
+
+    /**
      * Get themes
      * @param subject
      * @return {Promise.<Array>}

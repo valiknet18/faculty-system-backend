@@ -2,7 +2,7 @@ import Subject from "./subject";
 
 export default class Theme {
     constructor(id, title, subject) {
-        this.id = id;
+        this.id = parseInt(id);
         this.title = title;
         this.subject = subject;
     }

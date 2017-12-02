@@ -3,7 +3,7 @@ export const TEACHER_ROLE = 'teacher';
 
 export default class User {
     constructor(id, firstName, lastName, middleName, email, role, isAdmin, scienceDegree, phone, groupId, password) {
-        this.id = id;
+        this.id = parseInt(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;

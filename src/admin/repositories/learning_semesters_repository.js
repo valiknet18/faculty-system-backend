@@ -28,6 +28,25 @@ class LearningSemestersRepository {
     }
 
     /**
+     * Update learning semester
+     * @param {LearningSemester} learningSemester
+     * @return {Promise.<LearningSemester>}
+     */
+    async updateLearningSemesters(learningSemester) {
+        const query = `
+            UPDATE learning_semesters SET from_date=$1, to_date=$2 WHERE id=$3
+        `;
+
+        await this._db.query(query, [
+            learningSemester.fromDate,
+            learningSemester.toDate,
+            learningSemester.id,
+        ]);
+
+        return learningSemester;
+    }
+
+    /**
      * Get list of learning semesters
      * @return {Promise.<Array<LearningSemester>>}
      */

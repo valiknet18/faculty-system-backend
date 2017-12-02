@@ -46,6 +46,24 @@ class ThemesRepository {
 
         return theme;
     }
+
+    /**
+     * Update theme
+     * @param {Theme} theme
+     * @return {Promise.<Theme>}
+     */
+    async updateTheme(theme) {
+        const query = `
+            UPDATE themes SET title=$1 WHERE id=$2
+        `;
+
+        await db.query(query, [
+            theme.title,
+            theme.id
+        ]);
+
+        return theme;
+    }
 }
 
 export default new ThemesRepository();

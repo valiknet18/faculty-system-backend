@@ -12,12 +12,23 @@ class TasksService {
     /**
      * Create task
      * @param {Object} attributes
-     * @return {Promise.<*>}
+     * @return {Promise.<Task>}
      */
     async createTask(attributes) {
         return await this._tasksRepository.createTask(
             Task.fromArray(attributes)
         );
+    }
+
+    /**
+     * Update task
+     * @param attributes
+     * @return {Promise.<Task>}
+     */
+    async updateTask(attributes) {
+        return await this._tasksRepository.updateTask(
+            Task.fromArray(attributes)
+        )
     }
 
     /**

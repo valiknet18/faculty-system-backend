@@ -10,6 +10,7 @@ import {
 
 describe('Admin groups', () => {
     const CREATE_GROUP = '/api/admin/groups';
+    const UPDATE_GROUP = '/api/admin/groups/2';
     const GET_GROUPS = '/api/admin/groups';
 
     let expect = chai.expect;
@@ -36,7 +37,6 @@ describe('Admin groups', () => {
         expect(group.name).to.equal('Group 1')
     });
 
-
     it('group should be successfully created', async () => {
         const res = await request
             .post(CREATE_GROUP)
@@ -51,6 +51,22 @@ describe('Admin groups', () => {
 
         expect(group.id).to.equal(2);
         expect(group.name).to.equal('Test group')
+    });
+
+    it('group should be successfully updated', async () => {
+        const res = await request
+            .put(UPDATE_GROUP)
+            .set('Authorization', adminToken)
+            .send({
+                name: 'Updated group',
+            });
+
+        expect(res).to.have.status(200);
+
+        const group = res.body;
+
+        expect(group.id).to.equal(2);
+        expect(group.name).to.equal('Updated group')
     });
 
     after(async () => {

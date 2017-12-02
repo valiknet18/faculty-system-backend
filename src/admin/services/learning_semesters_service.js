@@ -16,10 +16,18 @@ class LearningSemestersService {
      */
     async createLearningSemester(attributes) {
         return await this._learningSemestersRepository.createLearningSemesters(
-            LearningSemester.fromArray({
-                from_date: attributes.fromDate,
-                to_date: attributes.toDate,
-            })
+            LearningSemester.fromArray(attributes)
+        );
+    }
+
+    /**
+     * Update learning semester
+     * @param {Object} attributes
+     * @return {Promise.<LearningSemester>}
+     */
+    async updateLearningSemester(attributes) {
+        return await this._learningSemestersRepository.updateLearningSemesters(
+            LearningSemester.fromArray(attributes)
         );
     }
 

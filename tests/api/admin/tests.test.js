@@ -10,6 +10,7 @@ import {
 
 describe('Admin tests', () => {
     const CREATE_TEST = '/api/admin/subjects/1/tests';
+    const UPDATE_TEST = '/api/admin/subjects/1/tests/3';
     const GET_TESTS = '/api/admin/subjects/1/tests';
 
     let expect = chai.expect;
@@ -50,6 +51,22 @@ describe('Admin tests', () => {
 
         expect(test.id).to.equal(3);
         expect(test.title).to.equal('Test test');
+    });
+
+    it('test should be successfully updated', async () => {
+        const res = await request
+            .put(UPDATE_TEST)
+            .set('Authorization', adminToken)
+            .send({
+                title: 'Updated test',
+            });
+
+        expect(res).to.have.status(200);
+
+        const test = res.body;
+
+        expect(test.id).to.equal(3);
+        expect(test.title).to.equal('Updated test');
     });
 
     after(async () => {

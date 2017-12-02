@@ -5,7 +5,7 @@ class LearningSemester {
      * @param {int} toDate
      */
     constructor(id, fromDate, toDate) {
-        this.id = id;
+        this.id = parseInt(id);
         this.fromDate = fromDate;
         this.toDate = toDate;
     }

@@ -1,5 +1,6 @@
 import User from "./user";
 import Theme from "./theme";
+import Test from "./test";
 
 export default class Task {
     /**
@@ -9,14 +10,16 @@ export default class Task {
      * @param {String} status
      * @param {User} student
      * @param {Theme} theme
+     * @param {Test} test
      */
-    constructor(id, title, content, status, student, theme) {
-        this.id = id;
+    constructor(id, title, content, status, student, theme, test) {
+        this.id = parseInt(id);
         this.title = title;
         this.content = content;
         this.status = status;
         this.student = student;
         this.theme = theme;
+        this.test = test;
     }
 
     setId(id) {
@@ -28,6 +31,12 @@ export default class Task {
      * @return {Task}
      */
     static fromArray(attributes) {
+        const test = attributes.test_id
+            ? Test.fromArray({
+                id: attributes.test_id,
+              })
+            : null;
+
         return new Task(
             attributes.id,
             attributes.title,
@@ -39,7 +48,8 @@ export default class Task {
             }),
             Theme.fromArray({
                 id: attributes.theme,
-            })
+            }),
+            test,
         );
     }
 }

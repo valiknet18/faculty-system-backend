@@ -37,6 +37,23 @@ class TestsController {
 
         return res.status(201).json(test)
     }
+
+    /**
+     * Update test
+     * @param req
+     * @param res
+     * @return {Promise.<void>}
+     */
+    async updateTestAction(req, res) {
+        const attributes = Object.assign({}, req.body, {
+            subject: req.params.subject,
+            id: req.params.test,
+        });
+
+        const test = await this._testsService.updateTest(attributes);
+
+        return res.json(test)
+    }
 }
 
 export default new TestsController(testsService);

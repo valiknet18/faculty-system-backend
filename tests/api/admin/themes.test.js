@@ -10,6 +10,7 @@ import {
 
 describe('Admin themes', () => {
     const CREATE_THEME = '/api/admin/subjects/1/themes';
+    const UPDATE_THEME = '/api/admin/subjects/1/themes/3';
     const GET_THEMES = '/api/admin/subjects/1/themes';
 
     let expect = chai.expect;
@@ -50,6 +51,22 @@ describe('Admin themes', () => {
 
         expect(theme.id).to.equal(3);
         expect(theme.title).to.equal('Test theme');
+    });
+
+    it('theme should be successfully updated', async () => {
+        const res = await request
+            .put(UPDATE_THEME)
+            .set('Authorization', adminToken)
+            .send({
+                title: 'Updated theme',
+            });
+
+        expect(res).to.have.status(200);
+
+        const theme = res.body;
+
+        expect(theme.id).to.equal(3);
+        expect(theme.title).to.equal('Updated theme');
     });
 
     after(async () => {

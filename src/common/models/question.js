@@ -2,7 +2,7 @@ import Test from "./test";
 
 export default class Question {
     constructor(id, title, content, type, test) {
-        this.id = id;
+        this.id = parseInt(id);
         this.title = title;
         this.content = content;
         this.type = type;

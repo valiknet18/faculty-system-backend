@@ -4,7 +4,7 @@ export default class Group {
      * @param {String} name
      */
     constructor(id, name) {
-        this.id = id;
+        this.id = parseInt(id);
         this.name = name;
     }
 

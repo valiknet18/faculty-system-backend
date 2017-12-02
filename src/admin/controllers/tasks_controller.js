@@ -17,7 +17,7 @@ class TasksController {
     async getTasksAction(req, res) {
         const tasks = await this._tasksService.getTasks(req.params.theme);
 
-        res.json({
+        return res.json({
             tasks: tasks
         });
     }
@@ -35,7 +35,24 @@ class TasksController {
 
         const task = await this._tasksService.createTask(attributes);
 
-        res.status(201).json(task)
+        return res.status(201).json(task)
+    }
+
+    /**
+     * Update task action
+     * @param req
+     * @param res
+     * @return {Promise.<void>}
+     */
+    async updateTaskAction(req, res) {
+        const attributes = Object.assign({}, req.body, {
+            theme: req.params.theme,
+            id: req.params.task,
+        });
+
+        const task = await this._tasksService.updateTask(attributes);
+
+        return res.json(task);
     }
 }
 

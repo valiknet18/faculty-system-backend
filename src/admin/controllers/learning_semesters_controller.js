@@ -15,9 +15,28 @@ class LearningSemestersController {
      * @return {Promise.<void>}
      */
     async createLearningSemesterAction(req, res) {
-        const learningSemester = await this._learningSemestersService.createLearningSemester(req.body);
+        const learningSemester = await this._learningSemestersService.createLearningSemester({
+            from_date: req.body.fromDate,
+            to_date: req.body.toDate,
+        });
 
         res.status(201).json(learningSemester);
+    }
+
+    /**
+     * Update learning semester
+     * @param req
+     * @param res
+     * @return {Promise.<void>}
+     */
+    async updateLearningSemesterAction(req, res) {
+        const learningSemester = await this._learningSemestersService.updateLearningSemester({
+            id: req.params.learning_semester,
+            from_date: req.body.fromDate,
+            to_date: req.body.toDate,
+        });
+
+        res.json(learningSemester);
     }
 
     /**

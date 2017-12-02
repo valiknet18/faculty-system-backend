@@ -1,6 +1,6 @@
 export default class Subject {
     constructor(id, name) {
-        this.id = id;
+        this.id = parseInt(id);
         this.name = name;
     }
 

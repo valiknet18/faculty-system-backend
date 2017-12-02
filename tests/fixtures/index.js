@@ -14,12 +14,12 @@ let functions = [
     groupsFixtures,
     usersFixtures,
     subjectsFixtures,
+    testsFixtures,
+    questionsFixtures,
     themesFixtures,
     tasksFixtures,
     learningSemestersFixtures,
     coursesFixtures,
-    testsFixtures,
-    questionsFixtures,
 ];
 
 const loadFixtures = async () => {

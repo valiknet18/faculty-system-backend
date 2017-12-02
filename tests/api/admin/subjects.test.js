@@ -10,6 +10,7 @@ import {
 
 describe('Admin subjects', () => {
     const CREATE_SUBJECT = '/api/admin/subjects';
+    const UPDATE_SUBJECT = '/api/admin/subjects/3';
     const GET_SUBJECTS = '/api/admin/subjects';
 
     let expect = chai.expect;
@@ -50,6 +51,22 @@ describe('Admin subjects', () => {
 
         expect(subject.id).to.equal(3);
         expect(subject.name).to.equal('Test subject 1');
+    });
+
+    it('subject should be successfully updated', async () => {
+        const res = await request
+            .put(UPDATE_SUBJECT)
+            .set('Authorization', adminToken)
+            .send({
+                name: 'Updated subject',
+            });
+
+        expect(res).to.have.status(200);
+
+        const subject = res.body;
+
+        expect(subject.id).to.equal(3);
+        expect(subject.name).to.equal('Updated subject');
     });
 
     after(async () => {

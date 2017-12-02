@@ -43,6 +43,24 @@ class TestsRepository {
 
         return test;
     }
+
+    /**
+     * Update test
+     * @param {Test} test
+     * @return {Promise.<Test>}
+     */
+    async updateTest(test) {
+        const query = `
+            UPDATE tests SET title=$1 WHERE id=$2
+        `;
+
+        await this._db.query(query, [
+            test.title,
+            test.id,
+        ]);
+
+        return test;
+    }
 }
 
 export default new TestsRepository(db);

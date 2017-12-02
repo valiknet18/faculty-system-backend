@@ -2,8 +2,8 @@ import learningSemestersService from "../../src/admin/services/learning_semester
 
 const learningSemesters = [
     {
-        fromDate: '2017-01-01T10:00:00+00:00',
-        toDate: '2017-10-01T10:00:00+00:00',
+        from_date: '2017-01-01T10:00:00+00:00',
+        to_date: '2017-10-01T10:00:00+00:00',
     }
 ];
 

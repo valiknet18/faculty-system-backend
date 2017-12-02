@@ -12,7 +12,7 @@ export default class Course {
      * @param {Object} learningSemester
      */
     constructor(id, subject, group, teacher, learningSemester) {
-        this.id = id;
+        this.id = parseInt(id);
         this.subject = subject;
         this.group = group;
         this.teacher = teacher;

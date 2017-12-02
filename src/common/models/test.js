@@ -7,7 +7,7 @@ export default class Test {
      * @param {Subject} subject
      */
     constructor(id, title, subject) {
-        this.id = id;
+        this.id = parseInt(id);
         this.title = title;
         this.subject = subject;
     }
