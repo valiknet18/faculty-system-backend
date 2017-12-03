@@ -9,16 +9,18 @@ export default class Task {
      * @param {String} content
      * @param {String} status
      * @param {Integer} points
+     * @param {Integer} priority
      * @param {User} student
      * @param {Theme} theme
      * @param {Test} test
      */
-    constructor(id, title, content, status, points, student, theme, test) {
+    constructor(id, title, content, status, points, priority, student, theme, test) {
         this.id = parseInt(id);
         this.title = title;
         this.content = content;
         this.status = status;
         this.points = points;
+        this.priority = priority;
         this.student = student;
         this.theme = theme;
         this.test = test;
@@ -45,6 +47,7 @@ export default class Task {
             attributes.content,
             attributes.status,
             attributes.points,
+            attributes.priority,
             User.fromArray({
                 first_name: attributes.student_first_name,
                 last_name: attributes.student_last_name,

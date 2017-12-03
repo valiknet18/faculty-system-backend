@@ -6,13 +6,15 @@ import LearningSemester from "./learningSemester";
 export default class Course {
     /**
      * @param {int} id
+     * @param {Date} finishDate
      * @param {Subject} subject
      * @param {Group} group
      * @param {User} teacher
      * @param {Object} learningSemester
      */
-    constructor(id, subject, group, teacher, learningSemester) {
+    constructor(id, finishDate, subject, group, teacher, learningSemester) {
         this.id = parseInt(id);
+        this.finishDate = finishDate;
         this.subject = subject;
         this.group = group;
         this.teacher = teacher;
@@ -33,6 +35,7 @@ export default class Course {
     static fromArray(attributes) {
         return new Course(
             attributes.id,
+            attributes.finishDate,
             Subject.fromArray({
                 id: attributes.subject,
                 name: attributes.subject_name,

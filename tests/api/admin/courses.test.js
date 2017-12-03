@@ -48,6 +48,7 @@ describe('Admin courses', () => {
                 learningSemester: 1,
                 subject: 2,
                 group: 1,
+                finishDate: '2017-12-01T10:00:00+0000'
             });
 
         expect(res).to.have.status(201);
@@ -58,6 +59,7 @@ describe('Admin courses', () => {
         expect(course.subject.id).to.equal(2);
         expect(course.group.id).to.equal(1);
         expect(course.teacher.id).to.equal(1);
+        expect(course.finishDate).to.equal('2017-12-01T10:00:00+0000');
     });
 
     after(async () => {

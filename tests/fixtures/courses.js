@@ -6,6 +6,7 @@ const courses = [
         group: 1,
         teacher: 1,
         learningSemester: 1,
+        finishDate: '2017-12-01T10:00:00+0000'
     },
 ];
 

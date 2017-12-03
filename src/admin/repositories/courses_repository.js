@@ -34,8 +34,8 @@ class CoursesRepository {
      */
     async createCourse(course) {
         const query = `
-            INSERT INTO subject_group(subject_id, group_id, teacher_id, learning_semester_id, created_at, updated_at) 
-            VALUES($1, $2, $3, $4, NOW(), NOW()) RETURNING id
+            INSERT INTO subject_group(subject_id, group_id, teacher_id, learning_semester_id, finish_date, created_at, updated_at) 
+            VALUES($1, $2, $3, $4, $5, NOW(), NOW()) RETURNING id
         `;
 
         const result = await this._db.query(query, [
@@ -43,6 +43,7 @@ class CoursesRepository {
             course.group.id,
             course.teacher.id,
             course.learningSemester.id,
+            course.finishDate,
         ]);
 
         course.setId(result.rows[0].id);

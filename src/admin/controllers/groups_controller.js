@@ -34,7 +34,7 @@ class GroupsController {
             students: students
         });
 
-        res.status(204).json(group);
+        res.json(group);
     }
 
     /**
