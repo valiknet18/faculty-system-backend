@@ -6,12 +6,14 @@ const tasks = [
         content: 'Tasks content',
         theme: 1,
         test_id: 1,
+        points: 0,
     },
     {
         title: 'Task 2',
         content: 'Tasks content',
         theme: 1,
         test_id: 1,
+        points: 10,
     }
 ];
 

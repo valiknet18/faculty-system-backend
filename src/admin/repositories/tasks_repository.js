@@ -14,7 +14,7 @@ class TasksRepository {
      */
     async getTasksBySubject(subject) {
         const query = `
-            SELECT tasks.id, tasks.title, tasks.content
+            SELECT tasks.id, tasks.title, tasks.content, tasks.points
             FROM tasks
             JOIN themes ON themes.id = tasks.theme_id
             WHERE themes.subject_id = $1
@@ -51,14 +51,15 @@ class TasksRepository {
      */
     async createTask(task) {
         const query = `
-            INSERT INTO tasks(title, content, test_id, theme_id, created_at, updated_at) 
-            VALUES($1, $2, $3, $4, NOW(), NOW())
+            INSERT INTO tasks(title, content, points, test_id, theme_id, created_at, updated_at) 
+            VALUES($1, $2, $3, $4, $5, NOW(), NOW())
             RETURNING id
         `;
 
         const result = await db.query(query, [
             task.title,
             task.content,
+            task.points,
             task.test ? task.test.id : null,
             task.theme.id,
         ]);
@@ -75,13 +76,14 @@ class TasksRepository {
      */
     async updateTask(task) {
         const query = `
-            UPDATE tasks SET title=$1, content=$2, test_id=$3 WHERE id=$4
+            UPDATE tasks SET title=$1, content=$2, test_id=$3, points=$4 WHERE id=$5
         `;
 
         await db.query(query, [
             task.title,
             task.content,
             task.test ? task.test.id : null,
+            task.points,
             task.id,
         ]);
 
