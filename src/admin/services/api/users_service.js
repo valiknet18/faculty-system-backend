@@ -1,5 +1,5 @@
-import usersRepository from '../repositories/users_repository';
-import User from "../../common/models/user";
+import usersRepository from '../../repositories/users_repository';
+import User from "../../../common/models/user";
 
 class UsersService {
     /**

@@ -2,6 +2,7 @@ import db from '../../common/connection/db';
 import Collection from "../../common/utils/collection";
 import Course from "../../common/models/course";
 import NotFoundError from "../../common/exceptions/not_found_error";
+import User from "../../common/models/user";
 
 class CoursesRepository {
     constructor(db) {
@@ -76,6 +77,24 @@ class CoursesRepository {
         }
 
         return Course.fromArray(result.rows[0]);
+    }
+
+    /**
+     * Get course students
+     * @param course
+     * @return {Promise.<Array>}
+     */
+    async getCourseStudents(course) {
+        const query = `
+            SELECT u.id, u.first_name, u.last_name
+            FROM subject_group as s_g
+            JOIN users as u ON u.group_id = s_g.group_id
+            WHERE s_g.id = $1
+        `;
+
+        const result = await this._db.query(query, [course]);
+
+        return Collection.convert(User, result.rows)
     }
 }
 

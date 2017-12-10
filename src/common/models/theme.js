@@ -12,12 +12,16 @@ export default class Theme {
     }
 
     static fromArray(attributes) {
+        const subject = (attributes.subject)
+            ? Subject.fromArray({
+                id: attributes.subject,
+            })
+            : undefined;
+
         return new Theme(
             attributes.id,
             attributes.title,
-            Subject.fromArray({
-                id: attributes.subject,
-            }),
+            subject,
         );
     }
 }

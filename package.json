@@ -19,11 +19,14 @@
     "express": "^4.16.1",
     "express-jwt": "^5.3.0",
     "express-validation": "^1.0.2",
+    "humps": "^2.0.1",
     "jsonwebtoken": "^8.0.1",
+    "moment": "^2.19.3",
     "nodemon": "^1.12.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.13.5",
+    "shuffle-array": "^1.0.1",
     "uuid-token-generator": "^1.0.0"
   },
   "scripts": {

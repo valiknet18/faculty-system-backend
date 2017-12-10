@@ -31,7 +31,7 @@ class QuestionsRepository {
      */
     async createQuestions(question) {
         const query = `
-            INSERT INTO questions(title, content, type, test_id, created_at, updated_at) VALUES ($1, $2, $3, $4, NOW(), NOW())
+            INSERT INTO questions(title, content, type, answers, test_id, created_at, updated_at) VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
             RETURNING id
         `;
 
@@ -39,6 +39,7 @@ class QuestionsRepository {
             question.title,
             question.content,
             question.type,
+            question.answers,
             question.test.id,
         ]);
 

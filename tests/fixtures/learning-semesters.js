@@ -1,9 +1,11 @@
-import learningSemestersService from "../../src/admin/services/learning_semesters_service";
+import learningSemestersService from "../../src/admin/services/api/learning_semesters_service";
+import moment from "moment";
 
 const learningSemesters = [
     {
-        from_date: '2017-01-01T10:00:00+0000',
-        to_date: '2017-10-01T10:00:00+0000',
+        fromDate: moment("2017-09-01T00:00:00+03:00").format(),
+        toDate: moment("2017-12-30T00:00:00+02:00").format(),
+        isEnabled: 1,
     }
 ];
 

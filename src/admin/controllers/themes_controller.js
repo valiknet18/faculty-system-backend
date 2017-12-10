@@ -1,4 +1,4 @@
-import themesService from '../services/themes_service';
+import themesService from '../services/api/themes_service';
 
 class ThemesController {
     constructor(themesService) {

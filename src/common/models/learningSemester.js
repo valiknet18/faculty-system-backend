@@ -1,13 +1,18 @@
+import humps from 'humps';
+import moment from "moment";
+
 class LearningSemester {
     /**
      * @param {int} id
-     * @param {int} fromDate
-     * @param {int} toDate
+     * @param {Date} fromDate
+     * @param {Date} toDate
+     * @param {bool} isEnabled
      */
-    constructor(id, fromDate, toDate) {
+    constructor(id, fromDate, toDate, isEnabled) {
         this.id = parseInt(id);
-        this.fromDate = fromDate;
-        this.toDate = toDate;
+        this.fromDate = moment(fromDate);
+        this.toDate = moment(toDate);
+        this.isEnabled = isEnabled;
     }
 
     setId(id) {
@@ -19,10 +24,13 @@ class LearningSemester {
      * @return {LearningSemester}
      */
     static fromArray(attributes) {
+        attributes = humps.camelizeKeys(attributes);
+
         return new LearningSemester(
             attributes.id,
-            attributes.from_date,
-            attributes.to_date,
+            attributes.fromDate,
+            attributes.toDate,
+            attributes.isEnabled,
         );
     }
 }

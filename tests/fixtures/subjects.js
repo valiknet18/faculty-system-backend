@@ -1,4 +1,4 @@
-import subjectsService from "../../src/admin/services/subjects_service";
+import subjectsService from "../../src/admin/services/api/subjects_service";
 
 const subjects = [
     {

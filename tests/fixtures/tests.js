@@ -1,4 +1,4 @@
-import testsService from "../../src/admin/services/tests_service";
+import testsService from "../../src/admin/services/api/tests_service";
 
 const tests = [
     {

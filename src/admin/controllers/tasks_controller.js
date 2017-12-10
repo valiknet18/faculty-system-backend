@@ -1,4 +1,4 @@
-import tasksService from '../services/tasks_service';
+import tasksService from '../services/api/tasks_service';
 
 class TasksController {
     /**
@@ -30,7 +30,7 @@ class TasksController {
      */
     async createTaskAction(req, res) {
         const attributes = Object.assign({}, req.body, {
-            theme: req.params.theme,
+            themeId: req.params.theme,
         });
 
         const task = await this._tasksService.createTask(attributes);
@@ -46,7 +46,7 @@ class TasksController {
      */
     async updateTaskAction(req, res) {
         const attributes = Object.assign({}, req.body, {
-            theme: req.params.theme,
+            themeId: req.params.theme,
             id: req.params.task,
         });
 

@@ -6,6 +6,7 @@ import {
     getUserToken,
     ADMIN_EMAIL
 } from '../../helpers';
+import moment from "moment";
 
 
 describe('Admin courses', () => {
@@ -39,7 +40,7 @@ describe('Admin courses', () => {
         expect(course.teacher.lastName).to.equal('Hrynevich');
     });
 
-    it('course should be successfully created', async () => {
+    it('course students should be successfully returned', async () => {
         const res = await request
             .post(CREATE_COURSE)
             .set('Authorization', adminToken)
@@ -48,7 +49,7 @@ describe('Admin courses', () => {
                 learningSemester: 1,
                 subject: 2,
                 group: 1,
-                finishDate: '2017-12-01T10:00:00+0000'
+                finishDate: moment('2017-12-01T10:00:00+02:00').format(),
             });
 
         expect(res).to.have.status(201);
@@ -59,7 +60,7 @@ describe('Admin courses', () => {
         expect(course.subject.id).to.equal(2);
         expect(course.group.id).to.equal(1);
         expect(course.teacher.id).to.equal(1);
-        expect(course.finishDate).to.equal('2017-12-01T10:00:00+0000');
+        expect(moment(course.finishDate).format()).to.equal('2017-12-01T10:00:00+02:00');
     });
 
     after(async () => {

@@ -17,12 +17,16 @@ export default class Test {
     }
 
     static fromArray(attributes) {
+        const subject = (attributes.subject)
+            ? Subject.fromArray({
+                id: attributes.subject,
+            })
+            : undefined;
+
         return new Test(
             attributes.id,
             attributes.title,
-            Subject.fromArray({
-                id: attributes.subject,
-            }),
+            subject,
         );
     }
 }

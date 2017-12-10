@@ -1,4 +1,4 @@
-import learningSemestersService from '../services/learning_semesters_service';
+import learningSemestersService from '../services/api/learning_semesters_service';
 
 class LearningSemestersController {
     /**

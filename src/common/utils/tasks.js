@@ -1,4 +1,5 @@
 import Task from "../models/task";
+import CourseTask from "../models/course_task";
 
 export default class Tasks {
     /**
@@ -15,7 +16,7 @@ export default class Tasks {
 
         for (let task of tasks) {
             groupedTasks[task.status].push(
-                Task.fromArray(task)
+                CourseTask.fromArray(task)
             );
         }
 

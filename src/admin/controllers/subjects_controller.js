@@ -1,4 +1,4 @@
-import subjectsService from '../services/subjects_service';
+import subjectsService from '../services/api/subjects_service';
 
 class SubjectsController {
     /**

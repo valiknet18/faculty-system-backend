@@ -6,6 +6,7 @@ import {
     getUserToken,
     ADMIN_EMAIL
 } from '../../helpers';
+import moment from "moment";
 
 
 describe('Admin learning semesters', () => {
@@ -34,8 +35,8 @@ describe('Admin learning semesters', () => {
         const learningSemester = res.body.learningSemesters[0];
 
         expect(learningSemester.id).to.equal(1);
-        expect(learningSemester.fromDate).to.equal('2017-01-01T08:00:00.000Z');
-        expect(learningSemester.toDate).to.equal('2017-10-01T07:00:00.000Z');
+        expect(moment(learningSemester.fromDate).format()).to.equal("2017-09-01T00:00:00+03:00");
+        expect(moment(learningSemester.toDate).format()).to.equal("2017-12-30T00:00:00+02:00");
     });
 
     it('learning semester should be successfully created', async () => {
@@ -43,8 +44,8 @@ describe('Admin learning semesters', () => {
             .post(CREATE_LEARNING_SEMESTER)
             .set('Authorization', adminToken)
             .send({
-                fromDate: '2017-01-01T10:00:00+0000',
-                toDate: '2017-10-01T10:00:00+0000',
+                fromDate: moment('2017-01-01T10:00:00+02:00').format(),
+                toDate: moment('2017-10-01T10:00:00+03:00').format(),
             });
 
         expect(res).to.have.status(201);
@@ -52,8 +53,8 @@ describe('Admin learning semesters', () => {
         const learningSemester = res.body;
 
         expect(learningSemester.id).to.equal(2);
-        expect(learningSemester.fromDate).to.equal('2017-01-01T10:00:00+0000');
-        expect(learningSemester.toDate).to.equal('2017-10-01T10:00:00+0000');
+        expect(moment(learningSemester.fromDate).format()).to.equal('2017-01-01T10:00:00+02:00');
+        expect(moment(learningSemester.toDate).format()).to.equal('2017-10-01T10:00:00+03:00');
     });
 
     it('learning semester should be successfully updated', async () => {
@@ -61,8 +62,8 @@ describe('Admin learning semesters', () => {
             .put(UPDATE_LEARNING_SEMESTER)
             .set('Authorization', adminToken)
             .send({
-                fromDate: '2017-05-01T10:00:00+0000',
-                toDate: '2017-10-20T10:00:00+0000',
+                fromDate: moment('2017-05-01T10:00:00+03:00').format(),
+                toDate: moment('2017-10-20T10:00:00+03:00').format(),
             });
 
         expect(res).to.have.status(200);
@@ -70,8 +71,8 @@ describe('Admin learning semesters', () => {
         const learningSemester = res.body;
 
         expect(learningSemester.id).to.equal(2);
-        expect(learningSemester.fromDate).to.equal('2017-05-01T10:00:00+0000');
-        expect(learningSemester.toDate).to.equal('2017-10-20T10:00:00+0000');
+        expect(moment(learningSemester.fromDate).format()).to.equal('2017-05-01T10:00:00+03:00');
+        expect(moment(learningSemester.toDate).format()).to.equal('2017-10-20T10:00:00+03:00');
     });
 
     after(async () => {

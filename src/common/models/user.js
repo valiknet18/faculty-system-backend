@@ -1,3 +1,5 @@
+import humps from 'humps';
+
 export const STUDENT_ROLE = 'student';
 export const TEACHER_ROLE = 'teacher';
 
@@ -29,17 +31,19 @@ export default class User {
     }
 
     static fromArray(attributes) {
+        attributes = humps.camelizeKeys(attributes);
+
         return new User(
             attributes.id,
-            attributes.first_name,
-            attributes.last_name,
-            attributes.middle_name,
+            attributes.firstName,
+            attributes.lastName,
+            attributes.middleName,
             attributes.email,
             attributes.role,
-            attributes.is_admin || false,
-            attributes.science_degree || null,
+            attributes.isAdmin || false,
+            attributes.scienceDegree || null,
             attributes.phone,
-            attributes.group_id,
+            attributes.groupId,
             attributes.password
         );
     }    

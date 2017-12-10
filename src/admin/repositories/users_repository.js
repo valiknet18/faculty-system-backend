@@ -3,6 +3,7 @@ import Collection from '../../common/utils/collection';
 import User from '../../common/models/user';
 import NotFoundError from "../../common/exceptions/not_found_error";
 import TokenGenerator from "uuid-token-generator";
+import moment from "moment";
 
 class UsersRepository {
     constructor(db) {
@@ -72,7 +73,7 @@ class UsersRepository {
         await db.query(query, [
             invitedUser.email,
             new TokenGenerator(256, TokenGenerator.BASE62).generate(),
-            new Date(),
+            moment().format(),
             invitedUser.role,
         ]);
     }

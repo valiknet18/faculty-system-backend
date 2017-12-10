@@ -11,6 +11,7 @@ import {
 describe('Student courses', () => {
     const GET_COURSES = '/api/courses';
     const GET_COURSE = '/api/courses/1';
+    const GET_COURSE_STUDENTS = '/api/courses/1/students';
 
     let expect = chai.expect;
     let studentToken;
@@ -54,6 +55,22 @@ describe('Student courses', () => {
         expect(course.teacher.firstName).to.equal('Valentyn');
         expect(course.teacher.lastName).to.equal('Hrynevich');
         expect(course.group.name).to.equal('Group 1');
+    });
+
+    it('course students should be successfully returned', async () => {
+        const res = await request
+            .get(GET_COURSE_STUDENTS)
+            .set('Authorization', studentToken);
+
+        expect(res).to.have.status(200);
+
+        const course = res.body;
+
+        expect(course.students).to.be.an("array");
+        expect(course.students.length).to.equal(1);
+        expect(course.students[0].id).to.equal(3);
+        expect(course.students[0].firstName).to.equal("User");
+        expect(course.students[0].lastName).to.equal("Student");
     });
 
     after(async () => {

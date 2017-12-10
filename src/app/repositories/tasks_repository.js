@@ -19,7 +19,7 @@ class TasksRepository {
      */
     async getUserTasks(user, course) {
         const query = `
-            SELECT s_g_t.id, t.title, t.content, s_g_t.status, u.last_name as student_last_name , u.first_name as student_first_name
+            SELECT s_g_t.id, t.id as task_id, t.title as task_title, s_g_t.status, u.last_name as user_last_name , u.first_name as user_first_name
             FROM subject_group_task as s_g_t
             JOIN tasks as t ON t.id = s_g_t.task_id
             JOIN users as u ON u.id = s_g_t.student_id
@@ -38,7 +38,7 @@ class TasksRepository {
      */
     async getCourseTasks(course) {
         const query = `
-            SELECT s_g_t.id, t.title, t.content, s_g_t.status, u.last_name as student_last_name , u.first_name as student_first_name
+            SELECT s_g_t.id, t.id as task_id, t.title as task_title, s_g_t.status, u.last_name as user_last_name , u.first_name as user_first_name
             FROM subject_group_task as s_g_t
             JOIN tasks as t ON t.id = s_g_t.task_id
             JOIN users as u ON u.id = s_g_t.student_id
@@ -87,7 +87,7 @@ class TasksRepository {
         await this._db.query(query, [
             status,
             task
-        ])
+        ]);
     }
 }
 

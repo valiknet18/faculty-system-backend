@@ -45,7 +45,7 @@ describe('Admin tasks', () => {
             .send({
                 title: 'Test task',
                 content: 'Content',
-                test_id: 1,
+                testId: 1,
                 points: 10,
             });
 
@@ -76,7 +76,7 @@ describe('Admin tasks', () => {
         expect(task.id).to.equal(4);
         expect(task.title).to.equal('Test task');
         expect(task.content).to.equal('Content');
-        expect(task.test).to.equal(null);
+        expect(task.test).to.equal(undefined);
     });
 
     it('task should be successfully updated without test_id', async () => {
@@ -95,7 +95,7 @@ describe('Admin tasks', () => {
         expect(task.id).to.equal(3);
         expect(task.title).to.equal('Updated task');
         expect(task.content).to.equal('Updated Content');
-        expect(task.test).to.equal(null);
+        expect(task.test).to.equal(undefined);
     });
 
     it('task should be successfully updated', async () => {
@@ -105,7 +105,7 @@ describe('Admin tasks', () => {
             .send({
                 title: 'Updated task',
                 content: 'Updated Content',
-                test_id: 2,
+                testId: 2,
                 points: 4,
             });
 

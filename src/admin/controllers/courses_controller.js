@@ -1,4 +1,4 @@
-import coursesService from '../services/courses_service';
+import coursesService from '../services/api/courses_service';
 
 class CoursesController {
     /**

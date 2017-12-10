@@ -1,5 +1,5 @@
-import learningSemestersRepository from '../repositories/learning_semesters_repository';
-import LearningSemester from '../../common/models/learningSemester';
+import learningSemestersRepository from '../../repositories/learning_semesters_repository';
+import LearningSemester from '../../../common/models/learningSemester';
 
 class LearningSemestersService {
     /**

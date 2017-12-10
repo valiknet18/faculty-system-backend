@@ -1,5 +1,5 @@
-import testsRepository from '../repositories/tests_repository';
-import Test from "../../common/models/test";
+import testsRepository from '../../repositories/tests_repository';
+import Test from "../../../common/models/test";
 
 class TestsService {
     /**

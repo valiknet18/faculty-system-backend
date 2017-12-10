@@ -1,4 +1,4 @@
-import usersService from '../services/users_service';
+import usersService from '../services/api/users_service';
 import NotFoundError from "../../common/exceptions/not_found_error";
 import * as Exceptions from "../../common/exceptions/exceptions";
 

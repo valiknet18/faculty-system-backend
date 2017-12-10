@@ -1,4 +1,4 @@
-import testsService from '../services/tests_service';
+import testsService from '../services/api/tests_service';
 
 class TestsController {
     /**

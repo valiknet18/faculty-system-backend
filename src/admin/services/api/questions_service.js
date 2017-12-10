@@ -1,5 +1,5 @@
-import questionsRepository from '../repositories/questions_repository';
-import Question from "../../common/models/question";
+import questionsRepository from '../../repositories/questions_repository';
+import Question from "../../../common/models/question";
 
 class QuestionsService {
     /**

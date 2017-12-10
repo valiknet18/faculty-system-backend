@@ -1,5 +1,5 @@
-import tasksRepository from '../repositories/tasks_repository';
-import Task from "../../common/models/task";
+import tasksRepository from '../../repositories/tasks_repository';
+import Task from "../../../common/models/task";
 
 class TasksService {
     /**

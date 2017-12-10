@@ -1,6 +1,7 @@
 import db from '../../common/connection/db';
 import Collection from "../../common/utils/collection";
 import Course from "../../common/models/course";
+import User from "../../common/models/user";
 
 class CoursesRepository {
     constructor(db) {
@@ -53,24 +54,22 @@ class CoursesRepository {
 
     /**
      * Assign task to student
-     * @param {Array<Task>} tasks
+     * @param {CourseTask} courseTask
      * @param {User} student
      * @param {Course} course
      * @return {Promise.<void>}
      */
-    async assignTasksToStudent(tasks, student, course) {
+    async assignTasksToStudent(courseTask, student, course) {
         const query = `
             INSERT INTO subject_group_task(task_id, student_id, subject_group_id, status, rating, created_at, updated_at, deadline_date)
             VALUES ($1, $2, $3, 'backlog', 0, NOW(), NOW(), NOW())
         `;
 
-        for (let task of tasks) {
-            await this._db.query(query, [
-                task.id,
-                student.id,
-                course.id
-            ]);
-        }
+        await this._db.query(query, [
+            courseTask.task.id,
+            student.id,
+            course.id
+        ]);
     }
 }
 

@@ -1,4 +1,4 @@
-import groupsService from "../../src/admin/services/groups_service";
+import groupsService from "../../src/admin/services/api/groups_service";
 
 const groups = [
     {

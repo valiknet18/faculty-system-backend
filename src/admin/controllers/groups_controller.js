@@ -1,4 +1,4 @@
-import groupsService from '../services/groups_service'
+import groupsService from '../services/api/groups_service'
 
 class GroupsController {
     /**

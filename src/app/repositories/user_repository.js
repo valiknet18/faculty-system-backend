@@ -2,6 +2,7 @@ import db from '../../common/connection/db';
 import User from "../../common/models/user";
 import NotFoundError from "../../common/exceptions/not_found_error";
 import InvitedUser from "../../common/models/invited_user";
+import moment from "moment";
 
 class UserRepository {
     constructor(db) {
@@ -95,7 +96,7 @@ class UserRepository {
             user.scienceDegree,
             user.email,
             user.phone,
-            new Date(),
+            moment().format(),
             user.groupId,
         ]);
 

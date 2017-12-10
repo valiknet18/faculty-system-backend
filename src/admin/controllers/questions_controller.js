@@ -1,4 +1,4 @@
-import questionsService from '../services/questions_service';
+import questionsService from '../services/api/questions_service';
 
 class QuestionsController {
     /**

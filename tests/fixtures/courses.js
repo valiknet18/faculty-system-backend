@@ -1,4 +1,5 @@
-import coursesService from "../../src/admin/services/courses_service";
+import coursesService from "../../src/admin/services/api/courses_service";
+import moment from "moment";
 
 const courses = [
     {
@@ -6,7 +7,7 @@ const courses = [
         group: 1,
         teacher: 1,
         learningSemester: 1,
-        finishDate: '2017-12-01T10:00:00+0000'
+        finishDate: moment('2017-12-01').format(),
     },
 ];
 

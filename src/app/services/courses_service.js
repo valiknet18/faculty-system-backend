@@ -33,6 +33,15 @@ class CoursesService {
     async getCourse(course) {
         return await this._coursesRepository.getCourse(course);
     }
+
+    /**
+     * Get students
+     * @param course
+     * @return {Promise.<*>}
+     */
+    async getStudents(course) {
+        return await this._coursesRepository.getCourseStudents(course)
+    }
 }
 
 export default new CoursesService(coursesRepository);

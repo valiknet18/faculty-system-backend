@@ -1,5 +1,5 @@
-import subjectsRepository from '../repositories/subjects_repository';
-import Subject from "../../common/models/subject";
+import subjectsRepository from '../../repositories/subjects_repository';
+import Subject from "../../../common/models/subject";
 
 class SubjectsService {
     /**

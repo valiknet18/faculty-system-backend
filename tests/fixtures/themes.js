@@ -1,4 +1,4 @@
-import themesService from "../../src/admin/services/themes_service";
+import themesService from "../../src/admin/services/api/themes_service";
 
 const themes = [
     {

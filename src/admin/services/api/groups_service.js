@@ -1,5 +1,5 @@
-import groupsRepository from '../repositories/groups_repository';
-import Group from "../../common/models/group";
+import groupsRepository from '../../repositories/groups_repository';
+import Group from "../../../common/models/group";
 
 class GroupsService {
     /**

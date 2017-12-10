@@ -1,6 +1,7 @@
 import db from '../../common/connection/db';
 import Collection from '../../common/utils/collection';
 import LearningSemester from '../../common/models/learningSemester';
+import NotFoundError from "../../common/exceptions/not_found_error";
 
 class LearningSemestersRepository {
     constructor(db) {
@@ -14,12 +15,13 @@ class LearningSemestersRepository {
      */
     async createLearningSemesters(learningSemester) {
         const query = `
-            INSERT INTO learning_semesters(from_date, to_date) VALUES ($1, $2) RETURNING id
+            INSERT INTO learning_semesters(from_date, to_date, is_enabled) VALUES ($1, $2, $3) RETURNING id
         `;
 
         const result = await this._db.query(query, [
-            learningSemester.fromDate,
-            learningSemester.toDate
+            learningSemester.fromDate.format(),
+            learningSemester.toDate.format(),
+            learningSemester.isEnabled
         ]);
 
         learningSemester.setId(result.rows[0].id);
@@ -58,6 +60,24 @@ class LearningSemestersRepository {
         const result = await this._db.query(query);
 
         return Collection.convert(LearningSemester, result.rows);
+    }
+
+    /**
+     * Get active learning semester
+     * @return {Promise.<LearningSemester>}
+     */
+    async getActiveLearningSemester() {
+        const query = `
+            SELECT * FROM learning_semesters WHERE is_enabled=1 LIMIT 1
+        `;
+
+        const result = await this._db.query(query);
+
+        if (!result.rows) {
+            throw new NotFoundError();
+        }
+
+        return LearningSemester.fromArray(result.rows[0]);
     }
 }
 

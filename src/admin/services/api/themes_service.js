@@ -1,5 +1,5 @@
-import themesRepository from '../repositories/themes_repository';
-import Theme from "../../common/models/theme";
+import themesRepository from '../../repositories/themes_repository';
+import Theme from "../../../common/models/theme";
 
 class ThemesService {
     /**
