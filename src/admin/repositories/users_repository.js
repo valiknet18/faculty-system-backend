@@ -33,7 +33,7 @@ class UsersRepository {
             SELECT * FROM users WHERE role='teacher'
         `;
 
-        const result = await db.query(query);
+        const result = await this._db.query(query);
 
         return Collection.convert(User, result.rows);
     }

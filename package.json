@@ -25,6 +25,7 @@
     "nodemon": "^1.12.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
+    "react-dropzone": "^4.2.7",
     "sequelize": "^4.13.5",
     "shuffle-array": "^1.0.1",
     "uuid-token-generator": "^1.0.0"

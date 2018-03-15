@@ -62,13 +62,14 @@ class CoursesRepository {
     async assignTasksToStudent(courseTask, student, course) {
         const query = `
             INSERT INTO subject_group_task(task_id, student_id, subject_group_id, status, rating, created_at, updated_at, deadline_date)
-            VALUES ($1, $2, $3, 'backlog', 0, NOW(), NOW(), NOW())
+            VALUES ($1, $2, $3, 'backlog', 0, NOW(), NOW(), $4)
         `;
 
         await this._db.query(query, [
             courseTask.task.id,
             student.id,
-            course.id
+            course.id,
+            courseTask.deadlineDate.format(),
         ]);
     }
 }

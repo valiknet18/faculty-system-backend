@@ -12,6 +12,8 @@ class CalculateTaskDeadlineDateService {
      * @return {Array.<CourseTask>}
      */
     calculateDeadlineDate(course, tasks, learningSemester) {
+        console.log(learningSemester.fromDate);
+
         let diffInDays = this.calculateDiffInDays(course.finishDate, learningSemester.fromDate);
         let pointsSum = this.calculateCountPoints(tasks);
         let countDaysPerTask = diffInDays/pointsSum;
@@ -20,7 +22,9 @@ class CalculateTaskDeadlineDateService {
 
         for (let task of tasks) {
             let lastDateInMilliseconds = moment(lastDate).valueOf() + (countDaysPerTask * task.points * SINGLE_DAY);
+
             lastDate = moment(lastDateInMilliseconds).format();
+
             let courseTask = CourseTask.fromArray({
                 deadlineDate: lastDate,
                 taskId: task.id,

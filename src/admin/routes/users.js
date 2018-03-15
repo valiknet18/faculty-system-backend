@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', usersController.getUsersAction.bind(usersController));
 router.post('/', usersController.inviteUserAction.bind(usersController));
+router.get('/teachers', usersController.getTeachersAction.bind(usersController));
 router.get('/:user', usersController.getUserAction.bind(usersController));
 router.put('/:user', usersController.editUserAction.bind(usersController));
 

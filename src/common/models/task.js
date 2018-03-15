@@ -36,9 +36,10 @@ export default class Task {
     static fromArray(attributes) {
         attributes = humps.camelizeKeys(attributes);
 
-        const test = attributes.testId
+        const test = (attributes.testId || attributes.testTitle)
             ? Test.fromArray({
                 id: attributes.testId,
+                title: attributes.testTitle,
               })
             : undefined;
 

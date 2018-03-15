@@ -15,7 +15,7 @@ export class EventsRepository {
      */
     async getEvents(user) {
         const query = `
-            SELECT s_g_t.id, t.title as task_title, s_g_t.deadline_date
+            SELECT s_g_t.id, t.title as task_title, s_g_t.created_at, s_g_t.deadline_date, s_g_t.subject_group_id as course_id
             FROM subject_group_task as s_g_t
             JOIN tasks as t ON t.id = s_g_t.task_id
             WHERE s_g_t.student_id = $1

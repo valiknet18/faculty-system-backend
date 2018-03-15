@@ -51,8 +51,8 @@ class TasksRepository {
      */
     async createTask(task) {
         const query = `
-            INSERT INTO tasks(title, content, points, test_id, theme_id, created_at, updated_at) 
-            VALUES($1, $2, $3, $4, $5, NOW(), NOW())
+            INSERT INTO tasks(title, content, points, test_id, theme_id, priority, created_at, updated_at) 
+            VALUES($1, $2, $3, $4, $5, $6, NOW(), NOW())
             RETURNING id
         `;
 
@@ -62,6 +62,7 @@ class TasksRepository {
             task.points,
             task.test ? task.test.id : null,
             task.theme.id,
+            task.priority,
         ]);
 
         task.setId(result.rows[0].id);

@@ -49,8 +49,12 @@ class CoursesService {
         const courseTasks = this._calculateDeadlineDateService.calculateDeadlineDate(course, tasks, learningSemester);
         const students = await this._groupsRepository.getStudents(course.group);
 
+        console.log(courseTasks);
+
         for (let user of students) {
             for (let courseTask of courseTasks) {
+                console.log(courseTask);
+
                 await this._coursesRepository.assignTasksToStudent(courseTask, user, course)
             }
         }
